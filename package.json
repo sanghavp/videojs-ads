@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "video.js": "^7.21.1",
+    "videojs-contrib-ads": "^6.9.0",
+    "vpaid-flash-client": "^1.0.2",
+    "vpaid-html5-client": "^0.1.14"
+  },
+  "scripts": {
+    "rollup": "npm-run-all rollup:*",
+    "rollup:max": "rollup -c configs/rollup.config.js",
+    "rollup:contribAds:max": "rollup -c configs/contrib.rollup.config.js",
+    "rollup:parser:max": "rollup -c configs/parser.rollup.config.js",
+    "rollup:vast-vpaid:max": "rollup -c configs/vast-vpaid.rollup.config.js"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "rollup": "^0.51.8",
+    "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-copy": "^0.2.3",
+    "rollup-plugin-json": "^2.3.1",
+    "rollup-plugin-scss": "^4.0.0"
+  }
+}
