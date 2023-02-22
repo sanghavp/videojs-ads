@@ -21,6 +21,7 @@ import States from './states.js';
 import './states/abstract/State.js';
 import './states/abstract/AdState.js';
 import './states/abstract/ContentState.js';
+
 import './states/AdsDone.js';
 import './states/Preroll.js';
 import './states/BeforePreroll.js';
@@ -75,9 +76,11 @@ const defaults = {
   allowVjsAutoplay: videojs.options.normalizeAutoplay || false
 };
 
-const contribAdsPlugin = function(options, player123) {
+const contribAdsPlugin = function(options, player) {
 
-  const player = player123; // eslint-disable-line consistent-this
+  // const player = this; // eslint-disable-line consistent-this
+  console.log("eslint-disable-line consistent-this",player)
+  console.log("eslint-disable-options",options)
 
   const settings = videojs.mergeOptions(defaults, options);
 
@@ -111,6 +114,10 @@ const contribAdsPlugin = function(options, player123) {
   // If we haven't seen a loadstart after 5 seconds, the plugin was not initialized
   // correctly.
   player.setTimeout(() => {
+    console.log({
+      hasThereBeenALoadStartDuringPlayerLife: player.ads._hasThereBeenALoadStartDuringPlayerLife,
+      Source: player.src()
+    })
     if (!player.ads._hasThereBeenALoadStartDuringPlayerLife && player.src() !== '') {
       videojs.log.error('videojs-contrib-ads has not seen a loadstart event 5 seconds ' +
         'after being initialized, but a source is present. This indicates that ' +
@@ -216,6 +223,7 @@ const contribAdsPlugin = function(options, player123) {
   // But first, cast to boolean.
   settings.stitchedAds = !!settings.stitchedAds;
 
+  player.ads._state;
   if (settings.stitchedAds) {
     player.ads._state = new (States.getState('StitchedContentPlayback'))(player);
   } else {
@@ -282,6 +290,11 @@ const contribAdsPlugin = function(options, player123) {
     'contentchanged', 'dispose', 'contentresumed', 'readyforpostroll',
     'nopreroll', 'nopostroll'
   ], (e) => {
+    if (settings.stitchedAds) {
+      player.ads._state = new (States.getState('StitchedContentPlayback'))(player);
+    } else {
+      player.ads._state = new (States.getState('BeforePreroll'))(player);
+    }
     player.ads._state.handleEvent(e.type);
   });
 

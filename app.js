@@ -32,16 +32,27 @@ let player = videojs("video",{
   // },
 })
 
-// player.ready(function() {
-//   var options = {
-//     debug: true,
-//     prerollTimeout: 50000,
-//     timeout: 50000,
-//     // adServerUrl: 'http://your.adserver.com/vast'
-//   };
+// player.ima(options)
 
-//   this.ads(options);
-// });
+player.ready(function() {
+  
+})
+
+
+
+
+
+
+// using parser plugin 
+player.parserXml(player, "https://pubads.g.doubleclick.net/gampad/ads?iu=%2F21766723698%2Ftvc%2Ftvc640x360&description_url=http%3A%2F%2Fvideo.kenh14.vn%2F&tfcd=0&npa=0&sz=640x360&cust_params=brand%3DDisney%20Antman3&gdfp_req=1&output=xml_vast4&unviewed_position_start=1&env=vp&vpos=preroll&vpmute=0&vpa=click&type=js&vad_type=linear&channel=vastadp%2Bvpaidadp_html5&sdkv=h.3.556.1%2Fvpaid_adapter&osd=2&frm=2&vis=1&sdr=1&hl=vi&afvsz=200x200%2C250x250%2C300x250%2C336x280%2C450x50%2C468x60%2C480x70&is_amp=0&uach=WyJXaW5kb3dzIiwiMTUuMC4wIiwieDg2IiwiIiwiMTEwLjAuNTQ4MS43NyIsW10sZmFsc2UsbnVsbCwiNjQiLFtbIkNocm9taXVtIiwiMTEwLjAuNTQ4MS43NyJdLFsiTm90IEEoQnJhbmQiLCIyNC4wLjAuMCJdLFsiR29vZ2xlIENocm9tZSIsIjExMC4wLjU0ODEuNzciXV0sZmFsc2Vd&u_so=l&ctv=0&adsid=ChAIgP-snwYQnZi-l4vsibxEEjkAZytoyDeWmgcJBNH14NCPO0RajDXbH3q1_AUzFQJMSbnCi7cC0569OHieSU398FW2arwfjEaC6H8&jar=2023-02-14-08&sdki=445&ptt=20&adk=2695912222&sdk_apis=2%2C7%2C8&omid_p=Google1%2Fh.3.556.1&sid=05125E91-2411-487C-B9BF-5B1F1E51ADC6&nel=0&eid=44748969%2C44765701%2C44777649&ref=https%3A%2F%2Fimasdk.googleapis.com%2F&url=https%3A%2F%2Fvideo.kenh14.vn&dt=1676365951259&correlator=1099342028612051&scor=1200344605013566&ged=ve4_td0_tt0_pd0_la0_er0.0.154.300_vi0.0.394.700_vp100_eb24427")
+
+
+
+// check if player using IMA SDK Plugin
+console.log("player.usingPlugin('parserXml')",player.usingPlugin('parserXml'));
+
+
+
 
 
 
@@ -149,13 +160,10 @@ getPlayBackRate();
 if(!!player.qualityLevels){
   const qualityList = document.querySelector(".quality-list");
   let qualityLevels = player.qualityLevels();
-  console.log("qualityLevels.length", qualityLevels.length);
   // generate first change
   let counter = 0;
   // Listen to change events for when the player selects a new quality level
   qualityLevels.on("change", function () {
-    console.log("Quality Level changed!", qualityLevels.selectedIndex);
-    // console.log("New level:", qualityLevels[qualityLevels.selectedIndex]);
     qlHTML = "";
     if (counter === 0) {
       counter++;
@@ -219,7 +227,6 @@ const playerDom = document.querySelector(".player");
 // const rightDom = document.querySelector(".right");
 btnTheaterModeDom.addEventListener("click", () => {
   let theaterMode = btnTheaterModeDom.getAttribute("theater_mode");
-  console.log(theaterMode);
   if (theaterMode == "false") {
     playerDom.style.width = "100vw";
     playerDom.style.zIndex = 1;
@@ -306,24 +313,6 @@ player.on("loadedmetadata", function () {
   }
 
 });
-
-
-
-
-// using parser plugin 
-player.parserXml(player, "https://pubads.g.doubleclick.net/gampad/ads?iu=%2F21766723698%2Ftvc%2Ftvc640x360&description_url=http%3A%2F%2Fvideo.kenh14.vn%2F&tfcd=0&npa=0&sz=640x360&cust_params=brand%3DDisney%20Antman3&gdfp_req=1&output=xml_vast4&unviewed_position_start=1&env=vp&vpos=preroll&vpmute=0&vpa=click&type=js&vad_type=linear&channel=vastadp%2Bvpaidadp_html5&sdkv=h.3.556.1%2Fvpaid_adapter&osd=2&frm=2&vis=1&sdr=1&hl=vi&afvsz=200x200%2C250x250%2C300x250%2C336x280%2C450x50%2C468x60%2C480x70&is_amp=0&uach=WyJXaW5kb3dzIiwiMTUuMC4wIiwieDg2IiwiIiwiMTEwLjAuNTQ4MS43NyIsW10sZmFsc2UsbnVsbCwiNjQiLFtbIkNocm9taXVtIiwiMTEwLjAuNTQ4MS43NyJdLFsiTm90IEEoQnJhbmQiLCIyNC4wLjAuMCJdLFsiR29vZ2xlIENocm9tZSIsIjExMC4wLjU0ODEuNzciXV0sZmFsc2Vd&u_so=l&ctv=0&adsid=ChAIgP-snwYQnZi-l4vsibxEEjkAZytoyDeWmgcJBNH14NCPO0RajDXbH3q1_AUzFQJMSbnCi7cC0569OHieSU398FW2arwfjEaC6H8&jar=2023-02-14-08&sdki=445&ptt=20&adk=2695912222&sdk_apis=2%2C7%2C8&omid_p=Google1%2Fh.3.556.1&sid=05125E91-2411-487C-B9BF-5B1F1E51ADC6&nel=0&eid=44748969%2C44765701%2C44777649&ref=https%3A%2F%2Fimasdk.googleapis.com%2F&url=https%3A%2F%2Fvideo.kenh14.vn&dt=1676365951259&correlator=1099342028612051&scor=1200344605013566&ged=ve4_td0_tt0_pd0_la0_er0.0.154.300_vi0.0.394.700_vp100_eb24427")
-
-
-
-
-
-// check if player using IMA SDK Plugin
-console.log("player.usingPlugin('ima')",player.usingPlugin('parserXml'));
-
-
-
-
-
 
 // Remove controls from the player on iPad to stop native controls from stealing
 // our click

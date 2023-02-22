@@ -7,6 +7,9 @@ such `ended` events and prefix them so they are sent as `adended`, and so on wit
 all other player events.
 */
 
+import contribAdsPlugin from "./plugin.js"
+import getAds from "./ads.js";
+
 // Cancel an event.
 // Video.js wraps native events. This technique stops propagation for the Video.js event
 // (AKA player event or wrapper event) while native events continue propagating.
@@ -40,12 +43,13 @@ const prefixEvent = (player, prefix, event) => {
 // * No playing event before preroll
 // * At least one playing event after preroll
 const handlePlaying = (player, event) => {
-  if (player.ads.isInAdMode()) {
+  // player.ads = new getAds(player)
+  if (player.getAds.isInAdMode()) {
 
-    if (player.ads.isContentResuming()) {
+    if (player.getAds.isContentResuming()) {
 
       // Prefix playing event when switching back to content after postroll.
-      if (player.ads._contentEnding) {
+      if (player.getAds._contentEnding) {
         prefixEvent(player, 'content', event);
       }
 
@@ -63,6 +67,7 @@ const handlePlaying = (player, event) => {
 // * No ended event before postroll
 // * A single ended event after postroll
 const handleEnded = (player, event) => {
+  // player.ads = new contribAdsPlugin()
   if (player.ads.isInAdMode()) {
 
     // Cancel ended events during content resuming. Normally we would
@@ -104,7 +109,7 @@ const handleEnded = (player, event) => {
 // * Event due to content source change is not prefixed
 // * Event due to content resuming is prefixed
 const handleLoadEvent = (player, event) => {
-
+  // player.ads = new contribAdsPlugin(null, player)
   // Initial event
   if (event.type === 'loadstart' && !player.ads._hasThereBeenALoadStartDuringPlayerLife ||
       event.type === 'loadeddata' && !player.ads._hasThereBeenALoadedData ||
@@ -142,11 +147,11 @@ const handleLoadEvent = (player, event) => {
 // Currently, playMiddleware is only supported on desktop browsers with
 // video.js after version 6.7.1.
 const handlePlay = (player, event) => {
-  if (player.ads.inAdBreak()) {
+  if (player.getAds.inAdBreak()) {
     prefixEvent(player, 'ad', event);
 
   // Content resuming
-  } else if (player.ads.isContentResuming()) {
+  } else if (player.getAds.isContentResuming()) {
     prefixEvent(player, 'content', event);
   }
 };
@@ -156,20 +161,21 @@ const handlePlay = (player, event) => {
 export default function redispatch(event) {
 
   // Events with special treatment
+  const ads = new getAds(player)
   if (event.type === 'playing') {
+    // this.ads = new contribAdsPlugin(null, player)
     handlePlaying(this, event);
   } else if (event.type === 'ended') {
     handleEnded(this, event);
   } else if (event.type === 'loadstart' ||
-             event.type === 'loadeddata' ||
-             event.type === 'loadedmetadata') {
+            event.type === 'loadeddata' ||
+            event.type === 'loadedmetadata') {
     handleLoadEvent(this, event);
   } else if (event.type === 'play') {
     handlePlay(this, event);
-
   // Standard handling for all other events
-  } else if (this.ads.isInAdMode()) {
-    if (this.ads.isContentResuming()) {
+  } else if (player.getAds.isInAdMode()) {
+    if (this.ads._state.isContentResuming()) {
 
       // Event came from snapshot restore after an ad, use "content" prefix
       prefixEvent(this, 'content', event);

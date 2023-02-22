@@ -6,7 +6,57 @@ import videojs from 'video.js';
 
 import {version as adsVersion} from '../../node_modules/videojs-contrib-ads/package.json';
 
+import States from './states';
+
+const defaults = {
+  // Maximum amount of time in ms to wait to receive `adsready` from the ad
+  // implementation after play has been requested. Ad implementations are
+  // expected to load any dynamic libraries and make any requests to determine
+  // ad policies for a video during this time.
+  timeout: 5000,
+
+  // Maximum amount of time in ms to wait for the ad implementation to start
+  // linear ad mode after `readyforpreroll` has fired. This is in addition to
+  // the standard timeout.
+  prerollTimeout: undefined,
+
+  // Maximum amount of time in ms to wait for the ad implementation to start
+  // linear ad mode after `readyforpostroll` has fired.
+  postrollTimeout: undefined,
+
+  // When truthy, instructs the plugin to output additional information about
+  // plugin state to the video.js log. On most devices, the video.js log is
+  // the same as the developer console.
+  debug: false,
+
+  // Set this to true when using ads that are part of the content video
+  stitchedAds: false,
+
+  // Force content to be treated as live or not live
+  // if not defined, the code will try to infer if content is live,
+  // which can have limitations.
+  contentIsLive: undefined,
+
+  // If set to true, content will play muted behind ads on supported platforms. This is
+  // to support ads on video metadata cuepoints during a live stream. It also results in
+  // more precise resumes after ads during a live stream.
+  liveCuePoints: true,
+
+  // If set to true, callPlay middleware will not terminate the first play request in
+  // BeforePreroll if the player intends to autoplay. This allows the manual autoplay
+  // attempt made by video.js to resolve/reject naturally and trigger an 'autoplay-success'
+  // or 'autoplay-failure' event with which other plugins can interface.
+  allowVjsAutoplay: videojs.options.normalizeAutoplay || false
+};
+
 export default function getAds(player) {
+  const settings = videojs.mergeOptions(defaults, options);
+  // Gán _state
+  if (settings.stitchedAds) {
+    player._state = new (States.getState('StitchedContentPlayback'))(player);
+  } else {
+    player._state = new (States.getState('BeforePreroll'))(player);
+  }
   return {
 
     disableNextSnapshotRestore: false,
@@ -70,12 +120,12 @@ export default function getAds(player) {
     // Call this when an ad response has been received and there are
     // linear ads ready to be played.
     startLinearAdMode() {
-      player.ads._state.startLinearAdMode();
+      player._state.startLinearAdMode();
     },
 
     // Call this when a linear ad pod has finished playing.
     endLinearAdMode() {
-      player.ads._state.endLinearAdMode();
+      player._state.endLinearAdMode();
     },
 
     // Call this when an ad response has been received but there are no
@@ -83,7 +133,7 @@ export default function getAds(player) {
     // This has no effect if we are already in an ad break.  Always
     // use endLinearAdMode() to exit from linear ad-playback state.
     skipLinearAdMode() {
-      player.ads._state.skipLinearAdMode();
+      player._state.skipLinearAdMode();
     },
 
     // With no arguments, returns a boolean value indicating whether or not
@@ -92,7 +142,7 @@ export default function getAds(player) {
     // deprecated.
     stitchedAds(arg) {
       if (arg !== undefined) {
-        videojs.log.warn('Using player.ads.stitchedAds() as a setter is deprecated, ' +
+        videojs.log.warn('Using player.stitchedAds() as a setter is deprecated, ' +
           'it should be set as an option upon initialization of contrib-ads.');
 
         // Keep the private property and the settings in sync. When this
@@ -108,7 +158,7 @@ export default function getAds(player) {
     // We test both src and currentSrc because changing the src attribute to a URL that
     // AdBlocker is intercepting doesn't update currentSrc.
     videoElementRecycled() {
-      if (player.ads.shouldPlayContentBehindAd(player)) {
+      if (player.shouldPlayContentBehindAd(player)) {
         return false;
       }
 
@@ -126,8 +176,8 @@ export default function getAds(player) {
     // One reason for this: https://github.com/videojs/video.js/issues/3262
     // Also, some live content can have a duration.
     isLive(somePlayer = player) {
-      if (typeof somePlayer.ads.settings.contentIsLive === 'boolean') {
-        return somePlayer.ads.settings.contentIsLive;
+      if (typeof somePlayer.settings.contentIsLive === 'boolean') {
+        return somePlayer.settings.contentIsLive;
       } else if (somePlayer.duration() === Infinity) {
         return true;
       } else if (videojs.browser.IOS_VERSION === '8' && somePlayer.duration() === 0) {
@@ -142,12 +192,12 @@ export default function getAds(player) {
     shouldPlayContentBehindAd(somePlayer = player) {
       if (!somePlayer) {
         throw new Error('shouldPlayContentBehindAd requires a player as a param');
-      } else if (!somePlayer.ads.settings.liveCuePoints) {
+      } else if (!somePlayer.settings.liveCuePoints) {
         return false;
       } else {
         return !videojs.browser.IS_IOS &&
-               !videojs.browser.IS_ANDROID &&
-               somePlayer.duration() === Infinity;
+              !videojs.browser.IS_ANDROID &&
+              somePlayer.duration() === Infinity;
       }
     },
 
@@ -178,27 +228,52 @@ export default function getAds(player) {
     // * An asynchronous ad request is ongoing while content is playing
     // * A non-linear ad is active
     isInAdMode() {
+      if (settings.stitchedAds) {
+        this._state = new (States.getState('StitchedContentPlayback'))(player);
+      } else {
+        this._state = new (States.getState('BeforePreroll'))(player);
+      }
       return this._state.isAdState();
     },
 
     // Returns true if in ad mode but an ad break hasn't started yet.
     isWaitingForAdBreak() {
+      if (settings.stitchedAds) {
+        this._state = new (States.getState('StitchedContentPlayback'))(player);
+      } else {
+        this._state = new (States.getState('BeforePreroll'))(player);
+      }
       return this._state.isWaitingForAdBreak();
     },
 
     // Returns true if content is resuming after an ad. This is part of ad mode.
     isContentResuming() {
+      if (settings.stitchedAds) {
+        this._state = new (States.getState('StitchedContentPlayback'))(player);
+      } else {
+        this._state = new (States.getState('BeforePreroll'))(player);
+      }
       return this._state.isContentResuming();
     },
 
     // Deprecated because the name was misleading. Use inAdBreak instead.
     isAdPlaying() {
+      if (settings.stitchedAds) {
+        this._state = new (States.getState('StitchedContentPlayback'))(player);
+      } else {
+        this._state = new (States.getState('BeforePreroll'))(player);
+      }
       return this._state.inAdBreak();
     },
 
     // Returns true if an ad break is ongoing. This is part of ad mode.
     // An ad break is the time between startLinearAdMode and endLinearAdMode.
     inAdBreak() {
+      if (settings.stitchedAds) {
+        this._state = new (States.getState('StitchedContentPlayback'))(player);
+      } else {
+        this._state = new (States.getState('BeforePreroll'))(player);
+      }
       return this._state.inAdBreak();
     },
 
@@ -219,12 +294,10 @@ export default function getAds(player) {
     },
 
     debug(...args) {
-      if (this.settings.debug) {
-        if (args.length === 1 && typeof args[0] === 'string') {
-          videojs.log('ADS: ' + args[0]);
-        } else {
-          videojs.log('ADS:', ...args);
-        }
+      if (args.length === 1 && typeof args[0] === 'string') {
+        videojs.log('ADS: ' + args[0]);
+      } else {
+        videojs.log('ADS:', ...args);
       }
     }
 

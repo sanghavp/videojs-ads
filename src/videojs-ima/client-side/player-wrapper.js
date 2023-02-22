@@ -27,14 +27,14 @@
   * @param {Controller} controller Reference to the parent controller.
   */
 
-import contribAdsPlugin from '../../contrib_ads/plugin.js'
+// import contribAdsPlugin from '../../contrib_ads/plugin.js'
 
 const PlayerWrapper = function(player, adsPluginSettings, controller) {
   /**
    * Instance of the video.js player.
    */
   this.vjsPlayer = player;
-  this.vjsPlayer.ads = new contribAdsPlugin(adsPluginSettings,this.vjsPlayer)
+  
   /**
    * Plugin controller.
    */
@@ -150,7 +150,7 @@ const PlayerWrapper = function(player, adsPluginSettings, controller) {
       this.controller.requestAds.bind(this.controller));
 }
 
-  this.vjsPlayer.ads;
+// this.vjsPlayer.contribAds = new contribAdsPlugin(adsPluginSettings, this.vjsPlayer);
 };
 
 

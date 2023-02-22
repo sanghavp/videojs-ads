@@ -238,17 +238,17 @@ const ImaPlugin = function (player, options) {
  * Initializes the plugin for client-side ads.
  * @param {Object} options Plugin option set on initiation.
  */
-const init = function (options) {
-  /* eslint no-invalid-this: 'off' */
-  // let options2 = this.options().params.options;
-  // this.contrib = contrib(this);
-  // console.log('+++++++++++++++++++++++++++++++++++++', this.contrib);
+// const init = function (options) {
+//   /* eslint no-invalid-this: 'off' */
+//   // let options2 = this.options().params.options;
+//   // this.contrib = contrib(this);
+//   // console.log('+++++++++++++++++++++++++++++++++++++', this.contrib);
 
-  this.ima = new ImaPlugin(this, options);
+//   this.ima = new ImaPlugin(this, options);
 
-};
+// };
 
-const registerPlugin = videojs.registerPlugin || videojs.plugin;
-registerPlugin("ima", init);
+// const registerPlugin = videojs.registerPlugin || videojs.plugin;
+// registerPlugin("ima", init);
 
 export default ImaPlugin;

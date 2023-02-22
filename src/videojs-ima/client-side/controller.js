@@ -98,7 +98,7 @@ Controller.IMA_DEFAULTS = {
  */
 Controller.prototype.initWithSettings = function(options) {
   this.settings = Object.assign({}, Controller.IMA_DEFAULTS, options || {});
-  console.log(this.settings);
+  console.log(" Controller settings: ", this.settings);
   this.warnAboutDeprecatedSettings();
 
   // Default showing countdown timer to true.

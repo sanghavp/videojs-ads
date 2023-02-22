@@ -1,12 +1,20 @@
 import videojs from "video.js";
 
-import "../contrib_ads/plugin.js";
-import "../videojs-ima/ima-plugin.js";
+import contribAdsPlugin from "../contrib_ads/plugin.js";
+import ImaPlugin from "../videojs-ima/ima-plugin.js";
 // import "../vast-vpaid/scripts/videojs_5.vast.vpaid";
 
 const parserXmlPlugin = function (player, url) {
     console.log("Tham số truyền vào plugin: ", { player, url });
     var xml = {};
+
+    const adsPluginSettings = {
+        debug: false,
+        prerollTimeout: 1000,
+        timeout: 5000,
+    }
+
+    player.contribAds = new contribAdsPlugin(adsPluginSettings, player);
 
     //utility Function
     function decapitalize(s) {
@@ -173,7 +181,13 @@ const parserXmlPlugin = function (player, url) {
                     parseXML(response.ad.wrapper.vASTAdTagURI.keyValue);
                 }else {
                     if(url.includes("doubleclick") || url.includes("googleapi")){
-                        player.ima({adTagUrl: url})
+
+                        let options = {
+                            adTagUrl: url
+                        }
+
+                        // player.ima({adTagUrl: url})
+                        player.ima = new ImaPlugin(player, options)
                     }else {
                         player.vastClient({adTagUrl: url})
                     }
@@ -187,30 +201,6 @@ const parserXmlPlugin = function (player, url) {
     // const response = xml.toJXONTree(url)
     parseXML(url)
 };
-
-
-// let responseAds = parseXML(url);
-
-// let ads;
-// // player.vastClient({ adTagUrl: url });
-// if (
-//     responseAds.src.includes("doubleclick") ||
-//     responseAds.src.includes("googleapi")
-// ) {
-//     // player.ima({ adTagUrl: url });
-//     ads = new Image(responseAds);
-// } else if (responseAds.src.includes("mp4")) {
-//     // player.vastClient({ adTagUrl: url });
-//     ads = new VAST(responseAds);
-// } else {
-//     ads = new VPAID(responseAds);
-// }
-
-// console.log(ads);
-
-// player.on('', function() {
-//     ads.play();
-// })
 
 const init = function (player, url) {
     this.parseXML = new parserXmlPlugin(player, url);
