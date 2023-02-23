@@ -2,7 +2,7 @@ import videojs from "video.js";
 
 import contribAdsPlugin from "../contrib_ads/plugin.js";
 import ImaPlugin from "../videojs-ima/ima-plugin.js";
-// import "../vast-vpaid/scripts/videojs_5.vast.vpaid";
+import VASTPlugin from "../vast-vpaid/scripts/plugin/videojs.vast.vpaid.js";
 
 const parserXmlPlugin = function (player, url) {
     console.log("Tham số truyền vào plugin: ", { player, url });
@@ -180,19 +180,17 @@ const parserXmlPlugin = function (player, url) {
                 ) {
                     parseXML(response.ad.wrapper.vASTAdTagURI.keyValue);
                 }else {
+                    let options = {
+                        adTagUrl: url
+                    }
                     if(url.includes("doubleclick") || url.includes("googleapi")){
-
-                        let options = {
-                            adTagUrl: url
-                        }
-
                         // player.ima({adTagUrl: url})
                         player.ima = new ImaPlugin(player, options)
                     }else {
-                        player.vastClient({adTagUrl: url})
+                        player.vastClient = new VASTPlugin(options, player)
                     }
                 }
-                return response;
+                // return response;
             }
         };
         xhttp.open("GET", url, true);

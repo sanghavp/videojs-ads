@@ -13,10 +13,12 @@ import playerUtils  from '../utils/playerUtils';
 import utilities  from '../utils/utilityFunctions';
 
 import logger from '../utils/consoleLogger';
+import "./components/ads-label_5"
+import "./components/black-poster_5"
 
-export default function VASTPlugin(options) {
+export default function VASTPlugin(options, player123) {
   var snapshot;
-  var player = this;
+  var player = player123;
   var vast = new VASTClient();
   var adsCanceled = false;
   var defaultOpts = {

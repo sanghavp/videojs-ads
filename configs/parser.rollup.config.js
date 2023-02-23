@@ -10,10 +10,11 @@ export default {
     file: 'dist/plugin.js',
     format: 'umd',
   },
-  external: ['video.js', 'videojs-contrib-ads'],
+  external: ['video.js', 'videojs-contrib-ads', 'vpaidFlashClient'],
   globals: {
     'video.js': 'videojs',
-    'VPAIDFLASHClient/js/VPAIDFLASHClient': 'VPAIDFLASHClient/js/VPAIDFLASHClient'
+    'vpaid-flash-client': 'vpaidFlashClient',
+    'vpaid-html5-client': 'vpaidFlashClient'
   },
   plugins: [
     json(),

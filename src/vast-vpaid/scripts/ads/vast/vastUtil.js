@@ -4,7 +4,7 @@ import utilities from '../../utils/utilityFunctions';
 import VPAIDHTML5Tech from '../vpaid/VPAIDHTML5Tech';
 import VPAIDFlashTech from '../vpaid/VPAIDFlashTech';
 // import VPAIDFLASHClient from 'VPAIDFLASHClient/js/VPAIDFLASHClient';
-import { VPAIDFLASHClient } from 'vpaid-flash-client';
+// import VPAIDFLASHClient from '../../VPAIDFLASHClient/VPAIDFLASHClient.js';
 
 var vastUtil = {
 
@@ -156,9 +156,9 @@ var vastUtil = {
     return null;
   },
 
-  isFlashSupported: function isFlashSupported() {
-    return VPAIDFLASHClient.isSupported();
-  },
+  // isFlashSupported: function isFlashSupported() {
+  //   return VPAIDFLASHClient.isSupported();
+  // },
 
   /**
    * Necessary step for VPAIDFLAShClient to know if flash is supported and not blocked.
@@ -167,7 +167,7 @@ var vastUtil = {
    * @param vpaidFlashLoaderPath the path to the vpaidFlashLoader swf obj.
    */
   runFlashSupportCheck: function runFlashSupportCheck(vpaidFlashLoaderPath) {
-    VPAIDFLASHClient.runFlashTest({data: vpaidFlashLoaderPath});
+    // VPAIDFLASHClient.runFlashTest({data: vpaidFlashLoaderPath});
   }
 
 };

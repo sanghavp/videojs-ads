@@ -14,7 +14,7 @@ import initializeContentupdate from './contentupdate.js';
 import cueTextTracks from './cueTextTracks.js';
 import initCancelContentPlay from './cancelContentPlay.js';
 import playMiddlewareFeature from './playMiddleware.js';
-import register from './register.js';
+// import register from './register.js';
 // import { listenToTcf } from './tcf.js';
 
 import States from './states.js';
@@ -77,7 +77,8 @@ const defaults = {
 
 const contribAdsPlugin = function(options, player123) {
 
-  const player = player123; // eslint-disable-line consistent-this
+  // const player = this; // eslint-disable-line consistent-this
+  const player = player123;
 
   const settings = videojs.mergeOptions(defaults, options);
 

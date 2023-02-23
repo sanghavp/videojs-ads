@@ -1,10 +1,10 @@
 'use strict';
 
-import {flash} from '../../utils/mimetypes';
+// import {flash} from '../../utils/mimetypes';
 
 import VASTError from '../vast/VASTError';
 
-import { VPAIDFLASHClient } from 'vpaid-flash-client';
+// import VPAIDFLASHClient  from '../../VPAIDFLASHClient/VPAIDFLASHClient.js';
 
 import utilities from '../../utils/utilityFunctions';
 import dom from '../../utils/dom';
@@ -30,42 +30,42 @@ function VPAIDFlashTech(mediaFile, settings) {
   }
 }
 
-VPAIDFlashTech.VPAIDFLASHClient = VPAIDFLASHClient;
+// VPAIDFlashTech.VPAIDFLASHClient = VPAIDFLASHClient;
 
-VPAIDFlashTech.supports = function (type) {
-  return (flash.indexOf(type) > -1) && VPAIDFlashTech.VPAIDFLASHClient.isSupported();
-};
+// VPAIDFlashTech.supports = function (type) {
+//   return (flash.indexOf(type) > -1) && VPAIDFlashTech.VPAIDFLASHClient.isSupported();
+// };
 
-VPAIDFlashTech.prototype.loadAdUnit = function loadFlashCreative(containerEl, objectEl, callback) {
-  var that = this;
-  var flashClientOpts = this.settings && this.settings.vpaidFlashLoaderPath ? {data: this.settings.vpaidFlashLoaderPath} : undefined;
-  sanityCheck(containerEl, callback);
+// VPAIDFlashTech.prototype.loadAdUnit = function loadFlashCreative(containerEl, objectEl, callback) {
+//   var that = this;
+//   var flashClientOpts = this.settings && this.settings.vpaidFlashLoaderPath ? {data: this.settings.vpaidFlashLoaderPath} : undefined;
+//   sanityCheck(containerEl, callback);
 
-  this.containerEl = containerEl;
+//   this.containerEl = containerEl;
 
-  logger.debug ("<VPAIDFlashTech.loadAdUnit> loading VPAIDFLASHClient with opts:", flashClientOpts);
+//   logger.debug ("<VPAIDFlashTech.loadAdUnit> loading VPAIDFLASHClient with opts:", flashClientOpts);
 
-  this.vpaidFlashClient = new VPAIDFlashTech.VPAIDFLASHClient(containerEl, function (error) {
-    if (error) {
-      return callback(error);
-    }
+//   this.vpaidFlashClient = new VPAIDFlashTech.VPAIDFLASHClient(containerEl, function (error) {
+//     if (error) {
+//       return callback(error);
+//     }
 
-    logger.info ("<VPAIDFlashTech.loadAdUnit> calling VPAIDFLASHClient.loadAdUnit(); that.mediaFile:", that.mediaFile);
-    that.vpaidFlashClient.loadAdUnit(that.mediaFile.src, callback);
-  }, flashClientOpts);
+//     logger.info ("<VPAIDFlashTech.loadAdUnit> calling VPAIDFLASHClient.loadAdUnit(); that.mediaFile:", that.mediaFile);
+//     that.vpaidFlashClient.loadAdUnit(that.mediaFile.src, callback);
+//   }, flashClientOpts);
 
-  /*** Local Functions ***/
-  function sanityCheck(container, cb) {
+//   /*** Local Functions ***/
+//   function sanityCheck(container, cb) {
 
-    if (!dom.isDomElement(container)) {
-      throw new VASTError('on VPAIDFlashTech.loadAdUnit, invalid dom container element');
-    }
+//     if (!dom.isDomElement(container)) {
+//       throw new VASTError('on VPAIDFlashTech.loadAdUnit, invalid dom container element');
+//     }
 
-    if (!utilities.isFunction(cb)) {
-      throw new VASTError('on VPAIDFlashTech.loadAdUnit, missing valid callback');
-    }
-  }
-};
+//     if (!utilities.isFunction(cb)) {
+//       throw new VASTError('on VPAIDFlashTech.loadAdUnit, missing valid callback');
+//     }
+//   }
+// };
 
 VPAIDFlashTech.prototype.unloadAdUnit = function () {
   if (this.vpaidFlashClient) {
