@@ -36,7 +36,7 @@ export default function VASTPlugin(options, player123) {
 
     // maximun amount of time for the ad to actually start playing. If this timeout gets
     // triggered the ads will be cancelled
-    adCancelTimeout: 3000,
+    adCancelTimeout: 5000,
 
     // Boolean flag that configures the player to play a new ad before the user sees the video again
     // the current video
@@ -62,6 +62,7 @@ export default function VASTPlugin(options, player123) {
 
   var settings = utilities.extend({}, defaultOpts, options || {});
 
+  // trong trường hợp link undefine và link ban đầu ok thì gán lại url ban đầu để chạy
   if(utilities.isUndefined(settings.adTagUrl) && utilities.isDefined(settings.url)){
     settings.adTagUrl = settings.url;
   }
@@ -131,7 +132,7 @@ export default function VASTPlugin(options, player123) {
       checkAdsEnabled,
       preparePlayerForAd,
       startAdCancelTimeout,
-      playPrerollAd
+      playPrerollAd,
     ], function (error, response) {
       if (error) {
         trackAdError(error, response);
@@ -215,6 +216,7 @@ export default function VASTPlugin(options, player123) {
       /*** local functions ***/
       function clearAdCancelTimeout() {
         if (adCancelTimeoutId) {
+          console.log("Đã xóa cancel!!!!!");
           clearTimeout(adCancelTimeoutId);
           adCancelTimeoutId = null;
         }
@@ -251,7 +253,7 @@ export default function VASTPlugin(options, player123) {
   }
 
   function getVastResponse(callback) {
-    vast.getVASTResponse(settings.adTagUrl ? settings.adTagUrl() : settings.adTagXML, callback);
+    vast.getVASTResponse(!!settings.adTagUrl ? settings.adTagUrl() : settings.adTagXML, callback);
   }
 
   function playAd(vastResponse, callback) {

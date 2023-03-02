@@ -1,12 +1,13 @@
 'use strict';
 
-const swfobject = require('swfobject');
+// const swfobject = require('swfobject');
 
 const FLASH_TEST = 'vpaid_video_flash_tester';
 const FLASH_TEST_EL = 'vpaid_video_flash_tester_el';
-const JSFlashBridge = require('./jsFlashBridge').JSFlashBridge;
-const utils = require('./utils');
-const MultipleValuesRegistry = require('./registry').MultipleValuesRegistry;
+import JSFlashBridge from './jsFlashBridge'
+import * as utils from './utils';
+
+import { MultipleValuesRegistry } from './registry';
 
 class FlashTester {
     constructor(parent, swfConfig = {data: 'VPAIDFlash.swf', width: 800, height: 400}) {
@@ -17,7 +18,7 @@ class FlashTester {
         params.FlashVars = `flashid=${FLASH_TEST_EL}&handler=${JSFlashBridge.VPAID_FLASH_HANDLER}`;
         params.allowScriptAccess = 'always';
 
-        this.el = swfobject.createSWF(swfConfig, params, FLASH_TEST_EL);
+        // this.el = swfobject.createSWF(swfConfig, params, FLASH_TEST_EL);
         this._handlers = new MultipleValuesRegistry();
         this._isSupported = false;
         if (this.el) {

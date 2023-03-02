@@ -14,21 +14,20 @@ export default {
   globals: {
     'video.js': 'videojs',
     'vpaid-flash-client': 'vpaidFlashClient',
-    'vpaid-html5-client': 'vpaidFlashClient'
+    'vpaid-html5-client': 'vpaidFlashClient',
+    'swfobject': 'swfobject'
   },
   plugins: [
     json(),
     scss({
-      fileName : 'output.css'
+      output : 'dist/videojs.vast.vpaid.css',
+      failOnError: true,
     }),
     copy({
       'src/videojs-ima/css/videojs.ima.css': 'dist/videojs.ima.css',
     }),
     copy({
       'src/videojs-ima/css/videojs.ima.css': 'dist/videojs.ima.scss',
-    }),
-    copy({
-      'src/contrib_ads/plugin.scss': 'dist/videojsContribAds.scss',
     }),
     babel({
       exclude: 'node_modules/**',

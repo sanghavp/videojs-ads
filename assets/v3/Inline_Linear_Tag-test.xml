@@ -14,7 +14,7 @@
 
             <Creatives>
                 <Creative id="5480" sequence="1">
-                    <Linear skipoffset="00:00:03">
+                    <Linear skipoffset="00:00:02">
                         <Duration>00:00:16</Duration>
                         <TrackingEvents>
                             <Tracking event="start">http://example.com/tracking/start</Tracking>

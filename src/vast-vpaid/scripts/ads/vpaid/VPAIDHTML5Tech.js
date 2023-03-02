@@ -4,12 +4,12 @@ import {html5} from '../../utils/mimetypes';
 
 import VASTError from '../vast/VASTError';
 
-// import  VPAIDHTML5Client  from '../../VPAIDHTML5Client/VPAIDHTML5Client.js';
+import  VPAIDHTML5Client  from '../../VPAIDHTML5Client/VPAIDHTML5Client.js';
 
 import utilities from '../../utils/utilityFunctions';
 import dom from '../../utils/dom';
 
-// import logger from  '../../utils/consoleLogger';
+import logger from  '../../utils/consoleLogger';
 
 function VPAIDHTML5Tech(mediaFile) {
 
@@ -33,7 +33,7 @@ function VPAIDHTML5Tech(mediaFile) {
   }
 }
 
-// VPAIDHTML5Tech.VPAIDHTML5Client = VPAIDHTML5Client;
+VPAIDHTML5Tech.VPAIDHTML5Client = VPAIDHTML5Client;
 
 VPAIDHTML5Tech.supports = function (type) {
   return !utilities.isOldIE() && html5.indexOf(type) > -1;
@@ -44,8 +44,8 @@ VPAIDHTML5Tech.prototype.loadAdUnit = function loadAdUnit(containerEl, videoEl, 
 
   this.containerEl = containerEl;
   this.videoEl = videoEl;
-  // this.vpaidHTMLClient = new VPAIDHTML5Tech.VPAIDHTML5Client(containerEl, videoEl, {});
-  // this.vpaidHTMLClient.loadAdUnit(this.mediaFile.src, callback);
+  this.vpaidHTMLClient = new VPAIDHTML5Tech.VPAIDHTML5Client(containerEl, videoEl, {});
+  this.vpaidHTMLClient.loadAdUnit(this.mediaFile.src, callback);
 
   function sanityCheck(container, video, cb) {
     if (!dom.isDomElement(container)) {
@@ -62,22 +62,22 @@ VPAIDHTML5Tech.prototype.loadAdUnit = function loadAdUnit(containerEl, videoEl, 
   }
 };
 
-// VPAIDHTML5Tech.prototype.unloadAdUnit = function unloadAdUnit() {
-//   if (this.vpaidHTMLClient) {
-//     try {
-//       this.vpaidHTMLClient.destroy();
-//     } catch(e) {
-//       logger.error ('VAST ERROR: trying to unload the VPAID adunit');
-//     }
+VPAIDHTML5Tech.prototype.unloadAdUnit = function unloadAdUnit() {
+  if (this.vpaidHTMLClient) {
+    try {
+      this.vpaidHTMLClient.destroy();
+    } catch(e) {
+      logger.error ('VAST ERROR: trying to unload the VPAID adunit');
+    }
 
-//     this.vpaidHTMLClient = null;
-//   }
+    this.vpaidHTMLClient = null;
+  }
 
-//   if (this.containerEl) {
-//     dom.remove(this.containerEl);
-//     this.containerEl = null;
-//   }
-// };
+  if (this.containerEl) {
+    dom.remove(this.containerEl);
+    this.containerEl = null;
+  }
+};
 
 var PREFIX = 'on VPAIDHTML5Tech';
 VPAIDHTML5Tech.INVALID_MEDIA_FILE = PREFIX + ', invalid MediaFile';

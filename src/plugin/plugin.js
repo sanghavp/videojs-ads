@@ -3,6 +3,7 @@ import videojs from "video.js";
 import contribAdsPlugin from "../contrib_ads/plugin.js";
 import ImaPlugin from "../videojs-ima/ima-plugin.js";
 import VASTPlugin from "../vast-vpaid/scripts/plugin/videojs.vast.vpaid.js";
+import { options } from "video.js";
 
 const parserXmlPlugin = function (player, url) {
     console.log("Tham số truyền vào plugin: ", { player, url });
@@ -12,7 +13,8 @@ const parserXmlPlugin = function (player, url) {
         debug: false,
         prerollTimeout: 1000,
         timeout: 5000,
-    }
+        adsCancelTimeout: 15000,
+    };
 
     player.contribAds = new contribAdsPlugin(adsPluginSettings, player);
 
@@ -162,46 +164,51 @@ const parserXmlPlugin = function (player, url) {
         return new xml.JXONTree(xmlDoc);
     };
 
-    const parseXML = (url) => {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                // Typical action to be performed when the document is ready:
-                let response = xml.toJXONTree(xhttp.response);
-                console.log(
-                    "xml.toJXONTree(xhttp.response)",
-                    "JSON.stringify(response)"
-                );
-                if (
-                    !!response.ad &&
-                    !!response.ad.wrapper &&
-                    (!!response.ad.wrapper.vASTAdTagURI ||
-                        !!response.ad.wrapper.VASTAdTagURI)
-                ) {
-                    parseXML(response.ad.wrapper.vASTAdTagURI.keyValue);
-                }else {
-                    let options = {
-                        adTagUrl: url
+    const parseXML = (options) => {
+        const url = options.adTagUrl;
+        if (!!url) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    // Typical action to be performed when the document is ready:
+                    let response = xml.toJXONTree(xhttp.response);
+                    if (
+                        !!response.ad &&
+                        !!response.ad.wrapper &&
+                        (!!response.ad.wrapper.vASTAdTagURI ||
+                            !!response.ad.wrapper.VASTAdTagURI)
+                    ) {
+                        parseXML(response.ad.wrapper.vASTAdTagURI.keyValue);
+                    } else {
+                        // player.vastClient = new VASTPlugin(options, player)
+                        // player.ima = new ImaPlugin(player, options)
+                        if (url.includes("doubleclick") || url.includes("googleapi")) {
+                            player.ima = new ImaPlugin(player, options);
+                        } else {
+                            player.vastClient = new VASTPlugin(options, player);
+                        }
                     }
-                    if(url.includes("doubleclick") || url.includes("googleapi")){
-                        // player.ima({adTagUrl: url})
-                        player.ima = new ImaPlugin(player, options)
-                    }else {
-                        player.vastClient = new VASTPlugin(options, player)
-                    }
+                    // return response;
+                } else {
+                    xhttp.addEventListener("error", (e) => {
+                        console.error("Xml request thất bại: ", e);
+                    });
                 }
-                // return response;
-            }
-        };
-        xhttp.open("GET", url, true);
-        xhttp.send();
+            };
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        } else {
+            console.error(
+                "Link quảng cáo được truyền vào chưa đúng định dạng hoặc đang bị lỗi, xin thử lại!"
+            );
+        }
     };
     // const response = xml.toJXONTree(url)
-    parseXML(url)
+    parseXML(url);
 };
 
-const init = function (player, url) {
-    this.parseXML = new parserXmlPlugin(player, url);
+const init = function (ontions) {
+    this.parseXML = new parserXmlPlugin(this, ontions);
 };
 const registerPlugin = videojs.registerPlugin || videojs.plugin;
 registerPlugin("parserXml", init);

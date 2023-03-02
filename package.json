@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "swfobject": "^2.2.1",
     "video.js": "^7.21.1",
     "videojs-contrib-ads": "^6.9.0",
     "vpaid-flash-client": "^1.0.2",

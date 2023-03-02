@@ -1,12 +1,19 @@
+
+// // ads VPAI
+// const adsLink = "http://127.0.0.1:5501/assets/v3/Event_Tracking-test.xml"
+
+
+// const adsLink = "http://127.0.0.1:5501/assets/ima.xml"
+
+// ads VAST
 const adsLink = "http://127.0.0.1:5501/assets/v3/Inline_Linear_Tag-test.xml"
+// const adsLink = ""
+
+
 let options = {
   id: "video",
-  adTagUrl:
-    "http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&" +
-    "iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&" +
-    "impl=s&gdfp_req=1&env=vp&output=xml_vmap1&unviewed_position_start=1&" +
-    "cust_params=sample_ar%3Dpremidpostpod%26deployment%3Dgmf-js&cmsid=496&" +
-    "vid=short_onecue&correlator=",
+  adTagUrl: adsLink,
+  adCancelTimeout: 3000
 };
 
 let player = videojs("video",{
@@ -31,12 +38,9 @@ let player = videojs("video",{
   //   controlBar: {
   //     volumePanel: {inline: false}
   // },
-})
-
-// player.ima(options)
-
-player.ready(function() {
-  
+}, () => {
+  // using ads plugin
+  player.parserXml(options)
 })
 
 
@@ -44,8 +48,10 @@ player.ready(function() {
 
 
 
-// using parser plugin 
-player.parserXml(player, adsLink)
+
+
+
+
 
 
 // check if player using IMA SDK Plugin
@@ -59,14 +65,14 @@ console.log("player.usingPlugin('parserXml')",player.usingPlugin('parserXml'));
 
 
 // Handle video theme and some func 
+let currentTime = document.querySelector(".vjs-remaining-time");
+let pictureInPicture = document.querySelector(
+  ".vjs-picture-in-picture-control"
+);
+pictureInPicture.setAttribute("title", "Xem dưới dạng thu nhỏ");
+pictureInPicture.style.marginLeft = "56px"
+pictureInPicture.style.marginRight = "56px"
 player.on("timeupdate", function () {
-  let currentTime = document.querySelector(".vjs-remaining-time");
-  let pictureInPicture = document.querySelector(
-    ".vjs-picture-in-picture-control"
-  );
-  pictureInPicture.setAttribute("title", "Xem dưới dạng thu nhỏ");
-  pictureInPicture.style.marginLeft = pictureInPicture.offsetWidth
-  pictureInPicture.style.marginRight = pictureInPicture.offsetWidth
   currentTime.innerHTML = `${convertTime(player.currentTime())}/${convertTime(
     this.duration()
   )}`;

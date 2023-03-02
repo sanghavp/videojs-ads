@@ -1,16 +1,13 @@
 'use strict';
 
-import swfobject from 'swfobject';
+// import swfobject from 'swfobject';
 import JSFlashBridge from './jsFlashBridge'
 import VPAIDAdUnit from './VPAIDAdUnit'
 
+import {noop, callbackTimeout, isPositiveInt, createElementWithID, unique as aa } from './utils'
 
-const noop = require('./utils').noop;
-const callbackTimeout = require('./utils').callbackTimeout;
-const isPositiveInt = require('./utils').isPositiveInt;
-const createElementWithID = require('./utils').createElementWithID;
-const uniqueVPAID = require('./utils').unique('vpaid');
-const createFlashTester = require('./flashTester.js').createFlashTester;
+const uniqueVPAID = aa('vpaid');
+import {createFlashTester} from './flashTester.js';
 
 const ERROR = 'error';
 const FLASH_VERSION = '10.1.0';
@@ -39,7 +36,7 @@ class VPAIDFLASHClient {
             return onError('user don\'t support flash or doesn\'t have the minimum required version of flash ' + FLASH_VERSION);
         }
 
-        this.el = swfobject.createSWF(swfConfig, params, this._flashID);
+        // this.el = swfobject.createSWF(swfConfig, params, this._flashID);
 
         if (!this.el) {
             return onError( 'swfobject failed to create object in element' );
@@ -133,7 +130,8 @@ class VPAIDFLASHClient {
 }
 
 setStaticProperty('isSupported', () => {
-    return swfobject.hasFlashPlayerVersion(FLASH_VERSION) && flashTester.isSupported();
+    // return swfobject.hasFlashPlayerVersion(FLASH_VERSION) && flashTester.isSupported();
+    return;
 }, true);
 
 setStaticProperty('runFlashTest', (swfConfig) => {
@@ -161,6 +159,6 @@ function setStaticProperty(propertyName, value, writable = false) {
     });
 }
 
-VPAIDFLASHClient.swfobject = swfobject;
+// VPAIDFLASHClient.swfobject = swfobject;
 
 export default VPAIDFLASHClient;

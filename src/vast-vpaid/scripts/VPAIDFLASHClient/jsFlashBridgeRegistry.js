@@ -1,6 +1,6 @@
 'use strict';
 
-let SingleValueRegistry = require('./registry').SingleValueRegistry;
+import { SingleValueRegistry } from './registry';
 let instances = new SingleValueRegistry();
 
 const JSFlashBridgeRegistry = {};

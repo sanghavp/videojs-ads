@@ -583,6 +583,11 @@
   "resolved" "https://registry.npmjs.org/supports-color/-/supports-color-2.0.0.tgz"
   "version" "2.0.0"
 
+"swfobject@^2.2.1":
+  "integrity" "sha512-zcr0lueMzUum1y95CNVFpJHxjPchbFFsBHujRW4iQhAw7pwotzS0gsSGgs4O0gylCrMhTKYI899dlwsc4Eq0Bg=="
+  "resolved" "https://registry.npmjs.org/swfobject/-/swfobject-2.2.1.tgz"
+  "version" "2.2.1"
+
 "to-fast-properties@^1.0.3":
   "integrity" "sha512-lxrWP8ejsq+7E3nNjwYmUBMAgjMTZoTI+sdBOpvNyijeDLa29LUn9QaoXAHv4+Z578hbmHHJKZknzxVtvo77og=="
   "resolved" "https://registry.npmjs.org/to-fast-properties/-/to-fast-properties-1.0.3.tgz"

@@ -356,6 +356,7 @@ VASTIntegrator.prototype._playSelectedAd = function playSelectedAd(source, respo
     });
 
     logger.debug ("<VASTIntegrator._playSelectedAd/playAd> calling player.play()...");
+    console.log("player khi được chọn: ", player)
 
     player.play();
   }
