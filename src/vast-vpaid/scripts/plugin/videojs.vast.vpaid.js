@@ -16,11 +16,13 @@ import logger from '../utils/consoleLogger';
 import "./components/ads-label_5"
 import "./components/black-poster_5"
 
-export default function VASTPlugin(options, player123) {
+export default function VASTPlugin(vastResponse, player123) {
   var snapshot;
   var player = player123;
-  var vast = new VASTClient();
+  // var vast = new VASTClient();
   var adsCanceled = false;
+
+
   var defaultOpts = {
     // maximum amount of time in ms to wait to receive `adsready` from the ad
     // implementation after play has been requested. Ad implementations are
@@ -60,6 +62,9 @@ export default function VASTPlugin(options, player123) {
     verbosity: 0
   };
 
+
+
+
   var settings = utilities.extend({}, defaultOpts, options || {});
 
   // trong trường hợp link undefine và link ban đầu ok thì gán lại url ban đầu để chạy
@@ -79,28 +84,31 @@ export default function VASTPlugin(options, player123) {
     return trackAdError(new VASTError('on VideoJS VAST plugin, missing adTagUrl on options object'));
   }
 
-  logger.setVerbosity (settings.verbosity);
+  // logger.setVerbosity (settings.verbosity);
 
   vastUtil.runFlashSupportCheck(settings.vpaidFlashLoaderPath);// Necessary step for VPAIDFLASHClient to work.
 
   playerUtils.prepareForAds(player);
 
-  if (settings.playAdAlways) {
-    // No matter what happens we play a new ad before the user sees the video again.
-    player.on('vast.contentEnd', function () {
-      setTimeout(function () {
-        player.trigger('vast.reset');
-      }, 0);
-    });
-  }
+
+
+  // if (settings.playAdAlways) {
+  //   // No matter what happens we play a new ad before the user sees the video again.
+  //   player.on('vast.contentEnd', function () {
+  //     setTimeout(function () {
+  //       player.trigger('vast.reset');
+  //     }, 0);
+  //   });
+  // }
 
   player.on('vast.firstPlay', tryToPlayPrerollAd);
 
-  player.on('vast.reset', function () {
-    //If we are reseting the plugin, we don't want to restore the content
-    snapshot = null;
-    cancelAds();
-  });
+
+  // player.on('vast.reset', function () {
+  //   //If we are reseting the plugin, we don't want to restore the content
+  //   snapshot = null;
+  //   cancelAds();
+  // });
 
   player.vast = {
     isEnabled: function () {
@@ -132,7 +140,8 @@ export default function VASTPlugin(options, player123) {
       checkAdsEnabled,
       preparePlayerForAd,
       startAdCancelTimeout,
-      playPrerollAd,
+      playAd(vastResponse)
+      // playPrerollAd,
     ], function (error, response) {
       if (error) {
         trackAdError(error, response);
@@ -245,16 +254,16 @@ export default function VASTPlugin(options, player123) {
     adsCanceled = true;
   }
 
-  function playPrerollAd(callback) {
-    async.waterfall([
-      getVastResponse,
-      playAd
-    ], callback);
-  }
+  // function playPrerollAd(callback) {
+  //   async.waterfall([
+  //     getVastResponse,
+  //     playAd
+  //   ], callback);
+  // }
 
-  function getVastResponse(callback) {
-    vast.getVASTResponse(!!settings.adTagUrl ? settings.adTagUrl() : settings.adTagXML, callback);
-  }
+  // function getVastResponse(callback) {
+  //   vast.getVASTResponse(!!settings.adTagUrl ? settings.adTagUrl() : settings.adTagXML, callback);
+  // }
 
   function playAd(vastResponse, callback) {
     //TODO: Find a better way to stop the play. The 'playPrerollWaterfall' ends in an inconsistent situation

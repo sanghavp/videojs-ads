@@ -1,13 +1,54 @@
 import videojs from "video.js";
 
 import contribAdsPlugin from "../contrib_ads/plugin.js";
+import VASTClient from "../vast-vpaid/scripts/ads/vast/VASTClient.js";
+import utilities from "../vast-vpaid/scripts/utils/utilityFunctions.js";
 import ImaPlugin from "../videojs-ima/ima-plugin.js";
 import VASTPlugin from "../vast-vpaid/scripts/plugin/videojs.vast.vpaid.js";
-import { options } from "video.js";
 
-const parserXmlPlugin = function (player, url) {
-    console.log("Tham số truyền vào plugin: ", { player, url });
-    var xml = {};
+const parserXmlPlugin = async function (player, options) {
+    console.log("Tham số truyền vào plugin: ", { player, options });
+
+    var defaultOpts = {
+        // maximum amount of time in ms to wait to receive `adsready` from the ad
+        // implementation after play has been requested. Ad implementations are
+        // expected to load any dynamic libraries and make any requests to determine
+        // ad policies for a video during this time.
+        timeout: 500,
+
+        //TODO:finish this IOS FIX
+        //Whenever you play an add on IOS, the native player kicks in and we loose control of it. On very heavy pages the 'play' event
+        // May occur after the video content has already started. This is wrong if you want to play a preroll ad that needs to happen before the user
+        // starts watching the content. To prevent this usec
+        iosPrerollCancelTimeout: 2000,
+
+        // maximun amount of time for the ad to actually start playing. If this timeout gets
+        // triggered the ads will be cancelled
+        adCancelTimeout: 5000,
+
+        // Boolean flag that configures the player to play a new ad before the user sees the video again
+        // the current video
+        playAdAlways: false,
+
+        // Flag to enable or disable the ads by default.
+        adsEnabled: true,
+
+        // Boolean flag to enable or disable the resize with window.resize or orientationchange
+        autoResize: true,
+
+        // Path to the VPAID flash ad's loader
+        vpaidFlashLoaderPath: "/VPAIDFlash.swf",
+
+        // verbosity of console logging:
+        // 0 - error
+        // 1 - error, warn
+        // 2 - error, warn, info
+        // 3 - error, warn, info, log
+        // 4 - error, warn, info, log, debug
+        verbosity: 0,
+    };
+
+    var settings = utilities.extend({}, defaultOpts, options || {});
 
     const adsPluginSettings = {
         debug: false,
@@ -18,197 +59,44 @@ const parserXmlPlugin = function (player, url) {
 
     player.contribAds = new contribAdsPlugin(adsPluginSettings, player);
 
-    //utility Function
-    function decapitalize(s) {
-        return s.charAt(0).toLowerCase() + s.slice(1);
-    }
+    // start get ad response
+    const vast = VASTClient();
 
-    xml.strToXMLDoc = function strToXMLDoc(stringContainingXMLSource) {
-        //IE 8
-        if (typeof window.DOMParser === "undefined") {
-            var xmlDocument = new ActiveXObject("Microsoft.XMLDOM");
-            xmlDocument.async = false;
-            xmlDocument.loadXML(stringContainingXMLSource);
-            return xmlDocument;
-        }
+    let urlXml = !!settings.adTagUrl ? settings.adTagUrl : settings.adTagXML
+    const vastResponse = await vast.getVASTResponse(urlXml);
+    console.log("vastResponse", vastResponse);
+    
+    // function handleDataRes(error, response) {
+    //     if (error) {
+    //         trackAdError(error, response);
+    //     } else {
+    //         player.trigger("vast.adEnd");
+    //     }
+    // }
 
-        return parseString(stringContainingXMLSource);
+    // function trackAdError(error, vastResponse) {
+    //     player.trigger({ type: 'vast.adError', error: error });
+    //     cancelAds();
+    //     logger.error('AD ERROR:', error.message, error, vastResponse);
+    // }
 
-        function parseString(stringContainingXMLSource) {
-            var parser = new DOMParser();
-            var parsedDocument;
+    // function cancelAds() {
+    //     player.trigger('vast.adsCancel');
+    //     adsCanceled = true;
+    // }
+    // console.log("vastResponse", vastResponse);
 
-            //Note: This try catch is to deal with the fact that on IE parser.parseFromString does throw an error but the rest of the browsers don't.
-            try {
-                parsedDocument = parser.parseFromString(
-                    stringContainingXMLSource,
-                    "application/xml"
-                );
+    // end get ad response
 
-                if (
-                    isParseError(parsedDocument) ||
-                    !(typeof stringContainingXMLSource === "string") ||
-                    stringContainingXMLSource.length === 0
-                ) {
-                    throw new Error();
-                }
-            } catch (e) {
-                throw new Error(
-                    "xml.strToXMLDOC: Error parsing the string: '" +
-                    stringContainingXMLSource +
-                    "'"
-                );
-            }
-            console.log(parsedDocument);
-            return parsedDocument;
-        }
-
-        function isParseError(parsedDocument) {
-            try {
-                // parser and parsererrorNS could be cached on startup for efficiency
-                var parser = new DOMParser(),
-                    erroneousParse = parser.parseFromString("INVALID", "text/xml"),
-                    parsererrorNS =
-                        erroneousParse.getElementsByTagName("parsererror")[0].namespaceURI;
-
-                if (parsererrorNS === "http://www.w3.org/1999/xhtml") {
-                    // In PhantomJS the parseerror element doesn't seem to have a special namespace, so we are just guessing here :(
-                    return parsedDocument.getElementsByTagName("parsererror").length > 0;
-                }
-
-                return (
-                    parsedDocument.getElementsByTagNameNS(parsererrorNS, "parsererror")
-                        .length > 0
-                );
-            } catch (e) {
-                //Note on IE parseString throws an error by itself and it will never reach this code. Because it will have failed before
-            }
-        }
-    };
-
-    xml.parseText = function parseText(sValue) {
-        if (/^\s*$/.test(sValue)) {
-            return null;
-        }
-        if (/^(?:true|false)$/i.test(sValue)) {
-            return sValue.toLowerCase() === "true";
-        }
-        if (isFinite(sValue)) {
-            return parseFloat(sValue);
-        }
-        return sValue.trim();
-    };
-
-    xml.JXONTree = function JXONTree(oXMLParent) {
-        var parseText = xml.parseText;
-
-        //The document object is an especial object that it may miss some functions or attrs depending on the browser.
-        //To prevent this problem with create the JXONTree using the root childNode which is a fully fleshed node on all supported
-        //browsers.
-        if (oXMLParent.documentElement) {
-            return new xml.JXONTree(oXMLParent.documentElement);
-        }
-
-        if (oXMLParent.hasChildNodes()) {
-            var sCollectedTxt = "";
-            for (
-                var oNode, sProp, vContent, nItem = 0;
-                nItem < oXMLParent.childNodes.length;
-                nItem++
-            ) {
-                oNode = oXMLParent.childNodes.item(nItem);
-                /*jshint bitwise: false*/
-                if (((oNode.nodeType - 1) | 1) === 3) {
-                    sCollectedTxt +=
-                        oNode.nodeType === 3 ? oNode.nodeValue.trim() : oNode.nodeValue;
-                } else if (oNode.nodeType === 1 && !oNode.prefix) {
-                    sProp = decapitalize(oNode.nodeName);
-                    vContent = new xml.JXONTree(oNode);
-                    if (this.hasOwnProperty(sProp)) {
-                        if (this[sProp].constructor !== Array) {
-                            this[sProp] = [this[sProp]];
-                        }
-                        this[sProp].push(vContent);
-                    } else {
-                        this[sProp] = vContent;
-                    }
-                }
-            }
-            if (sCollectedTxt) {
-                this.keyValue = parseText(sCollectedTxt);
-            }
-        }
-
-        //IE8 Stupid fix
-        var hasAttr =
-            typeof oXMLParent.hasAttributes === "undefined"
-                ? oXMLParent.attributes.length > 0
-                : oXMLParent.hasAttributes();
-        if (hasAttr) {
-            var oAttrib;
-            for (var nAttrib = 0; nAttrib < oXMLParent.attributes.length; nAttrib++) {
-                oAttrib = oXMLParent.attributes.item(nAttrib);
-                this["@" + decapitalize(oAttrib.name)] = parseText(
-                    oAttrib.value.trim()
-                );
-            }
-        }
-    };
-
-    // xml.JXONTree.prototype.attr = function(attr) {
-    //   return this['@' + decapitalize(attr)];
-    // };
-
-    xml.toJXONTree = function toJXONTree(xmlString) {
-        var xmlDoc = xml.strToXMLDoc(xmlString);
-        return new xml.JXONTree(xmlDoc);
-    };
-
-    const parseXML = (options) => {
-        const url = options.adTagUrl;
-        if (!!url) {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    // Typical action to be performed when the document is ready:
-                    let response = xml.toJXONTree(xhttp.response);
-                    if (
-                        !!response.ad &&
-                        !!response.ad.wrapper &&
-                        (!!response.ad.wrapper.vASTAdTagURI ||
-                            !!response.ad.wrapper.VASTAdTagURI)
-                    ) {
-                        parseXML(response.ad.wrapper.vASTAdTagURI.keyValue);
-                    } else {
-                        // player.vastClient = new VASTPlugin(options, player)
-                        // player.ima = new ImaPlugin(player, options)
-                        if (url.includes("doubleclick") || url.includes("googleapi")) {
-                            player.ima = new ImaPlugin(player, options);
-                        } else {
-                            player.vastClient = new VASTPlugin(options, player);
-                        }
-                    }
-                    // return response;
-                } else {
-                    xhttp.addEventListener("error", (e) => {
-                        console.error("Xml request thất bại: ", e);
-                    });
-                }
-            };
-            xhttp.open("GET", url, true);
-            xhttp.send();
-        } else {
-            console.error(
-                "Link quảng cáo được truyền vào chưa đúng định dạng hoặc đang bị lỗi, xin thử lại!"
-            );
-        }
-    };
-    // const response = xml.toJXONTree(url)
-    parseXML(url);
+    // if () {
+    //     player.ima = new ImaPlugin(player, options);
+    // } else {
+    player.vastClient = VASTPlugin(vastResponse, player);
+    // }
 };
 
-const init = function (ontions) {
-    this.parseXML = new parserXmlPlugin(this, ontions);
+const init = function (options) {
+    this.parseXML = parserXmlPlugin(this, options);
 };
 const registerPlugin = videojs.registerPlugin || videojs.plugin;
 registerPlugin("parserXml", init);

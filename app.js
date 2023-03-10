@@ -13,7 +13,7 @@ const adsLink = "http://127.0.0.1:5501/assets/v3/Inline_Linear_Tag-test.xml"
 let options = {
   id: "video",
   adTagUrl: adsLink,
-  adCancelTimeout: 3000
+  // adCancelTimeout: 3000
 };
 
 let player = videojs("video",{
@@ -41,6 +41,8 @@ let player = videojs("video",{
 }, () => {
   // using ads plugin
   player.parserXml(options)
+  // check if player using IMA SDK Plugin
+  console.log("player.usingPlugin('parserXml')",player.usingPlugin('parserXml'));
 })
 
 
@@ -54,8 +56,7 @@ let player = videojs("video",{
 
 
 
-// check if player using IMA SDK Plugin
-console.log("player.usingPlugin('parserXml')",player.usingPlugin('parserXml'));
+
 
 
 
