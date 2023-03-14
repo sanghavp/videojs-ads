@@ -203,7 +203,7 @@ playerUtils.prepareForAds = function (player) {
 
   monkeyPatchPlayerApi();
 
-  player.on('ready', tryToTriggerFirstPlay);
+  player.on('play', tryToTriggerFirstPlay);
   player.on('vast.reset', resetFirstPlay);//Every time we change the sources we reset the first play.
   player.on('vast.firstPlay', restoreContentVolume);
   player.on('error', hideBlackPoster);//If there is an error in the player we remove the blackposter to show the err msg
@@ -351,6 +351,7 @@ playerUtils.prepareForAds = function (player) {
   }
 
   function removeStyles() {
+    console.log("Xóa trạng thái đang chạy của quảng cáo");
     dom.removeClass(player.el(), 'vjs-ad-playing');
   }
 };

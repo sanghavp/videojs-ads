@@ -127,7 +127,7 @@ export default function VASTPlugin(vastResponse, player123) {
   return player.vast;
 
   /**** Local functions ****/
-  function tryToPlayPrerollAd() {
+  async function tryToPlayPrerollAd() {
     //We remove the poster to prevent flickering whenever the content starts playing
     playerUtils.removeNativePoster(player);
 
@@ -140,8 +140,11 @@ export default function VASTPlugin(vastResponse, player123) {
       checkAdsEnabled,
       preparePlayerForAd,
       startAdCancelTimeout,
-      playAd(vastResponse)
       // playPrerollAd,
+      function () {
+        playAd(vastResponse)
+      }
+      // await playAd(vastResponse)
     ], function (error, response) {
       if (error) {
         trackAdError(error, response);
@@ -149,6 +152,7 @@ export default function VASTPlugin(vastResponse, player123) {
         player.trigger('vast.adEnd');
       }
     });
+
 
     /*** Local functions ***/
 
@@ -265,7 +269,8 @@ export default function VASTPlugin(vastResponse, player123) {
   //   vast.getVASTResponse(!!settings.adTagUrl ? settings.adTagUrl() : settings.adTagXML, callback);
   // }
 
-  function playAd(vastResponse, callback) {
+  async function playAd(vastResponse) {
+    console.log("vastResponse log tại hàm playAd: ", vastResponse);
     //TODO: Find a better way to stop the play. The 'playPrerollWaterfall' ends in an inconsistent situation
     //If the state is not 'preroll?' it means the ads were canceled therefore, we break the waterfall
     if (adsCanceled) {
@@ -289,7 +294,7 @@ export default function VASTPlugin(vastResponse, player123) {
 
     player.vast.vastResponse = vastResponse;
     logger.debug ("calling adIntegrator.playAd() with vastResponse:", vastResponse);
-    player.vast.adUnit = adIntegrator.playAd(vastResponse, callback);
+    player.vast.adUnit = adIntegrator.playAd(vastResponse);
 
     /*** Local functions ****/
     function addAdsLabel() {

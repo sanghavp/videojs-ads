@@ -12,6 +12,7 @@ async.iterator = function (tasks) {
   var makeCallback = function (index) {
     var fn = function () {
       if (tasks.length) {
+        // console.log("tasks[index]", tasks[index]);
         tasks[index].apply(null, arguments);
       }
       return fn.next();

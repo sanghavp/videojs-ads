@@ -1,12 +1,13 @@
+let adsLink = ''
 
 // // ads VPAI
-// const adsLink = "http://127.0.0.1:5501/assets/v3/Event_Tracking-test.xml"
+adsLink = "http://127.0.0.1:5501/assets/v3/Event_Tracking-test.xml"
 
 
 // const adsLink = "http://127.0.0.1:5501/assets/ima.xml"
 
 // ads VAST
-const adsLink = "http://127.0.0.1:5501/assets/v3/Inline_Linear_Tag-test.xml"
+// adsLink = "http://127.0.0.1:5501/assets/v3/Inline_Linear_Tag-test.xml"
 // const adsLink = ""
 
 

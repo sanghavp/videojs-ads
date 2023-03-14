@@ -49,7 +49,6 @@ VASTClient.prototype.getVASTResponse = function getVASTResponse(adTagUrl) {
     }
 
     getVASTAd().then((vastAd) => {
-      console.log("AdsChain: ", JSON.stringify(vastAd));
       resolve(buildVASTResponse(vastAd));
     });
 
@@ -130,7 +129,6 @@ function _getVASTAd(adTagUrl) {
     }
 
     let a = await _getAd().then((adJxonTree) => {
-      console.log("--------------- adJxonTree ------------------", adJxonTree);
       let b = buildAd(adJxonTree, adChain);
       return b;
     });
@@ -217,7 +215,6 @@ function _getVASTAd(adTagUrl) {
         vastTree.ads = [];
       }
 
-      console.log("---------- VastTree:", vastTree);
 
       // check ads
       let checkErr = validateVASTTree(vastTree);
@@ -234,8 +231,6 @@ function _getVASTAd(adTagUrl) {
 
       let urlAds = waterfallAds.shift();
 
-      console.log("------ vastTree.ads ----------", vastTree);
-      console.log("------ waterfallAds ----------", waterfallAds);
 
       let adChain = [];
       getAd(urlAds, adChain);
@@ -252,7 +247,6 @@ function _getVASTAd(adTagUrl) {
           return checkErr;
         }
       } else {
-        console.log("adChain tại hàm build Vast waterfall: ", adChain);
         return adChain;
       }
 
