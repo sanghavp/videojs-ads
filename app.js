@@ -1,10 +1,10 @@
 let adsLink = ''
 
 // // ads VPAI
-adsLink = "http://127.0.0.1:5501/assets/v3/Event_Tracking-test.xml"
+adsLink = "http://127.0.0.1:5501/assets/v3/Video_Clicks_and_click_tracking-Inline-test.xml"
 
 
-// const adsLink = "http://127.0.0.1:5501/assets/ima.xml"
+// adsLink = "http://127.0.0.1:5501/assets/ima.xml"
 
 // ads VAST
 // adsLink = "http://127.0.0.1:5501/assets/v3/Inline_Linear_Tag-test.xml"
@@ -40,12 +40,12 @@ let player = videojs("video",{
   //     volumePanel: {inline: false}
   // },
 }, () => {
-  // using ads plugin
-  player.parserXml(options)
-  // check if player using IMA SDK Plugin
-  console.log("player.usingPlugin('parserXml')",player.usingPlugin('parserXml'));
+  
 })
-
+// using ads plugin
+player.parserXml(options)
+// check if player using IMA SDK Plugin
+console.log("player.usingPlugin('parserXml')",player.usingPlugin('parserXml'));
 
 
 

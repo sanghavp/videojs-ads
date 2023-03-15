@@ -136,23 +136,32 @@ export default function VASTPlugin(vastResponse, player123) {
       restoreVideoContent();
     });
 
-    async.waterfall([
-      checkAdsEnabled,
-      preparePlayerForAd,
-      startAdCancelTimeout,
-      // playPrerollAd,
-      function () {
-        playAd(vastResponse)
-      }
-      // await playAd(vastResponse)
-    ], function (error, response) {
-      if (error) {
-        trackAdError(error, response);
-      } else {
-        player.trigger('vast.adEnd');
-      }
-    });
 
+    // Viết theo kiểu callback ban đầu
+
+    // async.waterfall([
+    //   checkAdsEnabled,
+    //   preparePlayerForAd,
+    //   startAdCancelTimeout,
+    //   // playPrerollAd,
+    //   function () {
+    //     playAd(vastResponse)
+    //   }
+    //   // await playAd(vastResponse)
+    // ], function (error, response) {
+    //   if (error) {
+    //     trackAdError(error, response);
+    //   } else {
+    //     player.trigger('vast.adEnd');
+    //   }
+    // });
+
+    
+    // Chuyển sang promise
+    checkAdsEnabled()
+    preparePlayerForAd()
+    startAdCancelTimeout()
+    await playAd(vastResponse)
 
     /*** Local functions ***/
 
@@ -186,29 +195,29 @@ export default function VASTPlugin(vastResponse, player123) {
       });
     }
 
-    function checkAdsEnabled(next) {
+    function checkAdsEnabled() {
       if (settings.adsEnabled) {
-        return next(null);
+        return null;
       }
-      next(new VASTError('Ads are not enabled'));
+      return new VASTError('Ads are not enabled');
     }
 
-    function preparePlayerForAd(next) {
+    function preparePlayerForAd() {
       if (canPlayPrerollAd()) {
         snapshot = playerUtils.getPlayerSnapshot(player);
         player.pause();
         addSpinnerIcon();
 
         if(player.paused()) {
-          next(null);
+          return null;
         } else {
           playerUtils.once(player, ['playing'], function() {
             player.pause();
-            next(null);
+            return null;
           });
         }
       } else {
-        next(new VASTError('video content has been playing before preroll ad'));
+        return new VASTError('video content has been playing before preroll ad');
       }
     }
 
@@ -216,7 +225,7 @@ export default function VASTPlugin(vastResponse, player123) {
       return !utilities.isIPhone() || player.currentTime() <= settings.iosPrerollCancelTimeout;
     }
 
-    function startAdCancelTimeout(next) {
+    function startAdCancelTimeout() {
       var adCancelTimeoutId;
       adsCanceled = false;
 
@@ -235,7 +244,7 @@ export default function VASTPlugin(vastResponse, player123) {
         }
       }
 
-      next(null);
+      return null;
     }
 
     function addSpinnerIcon() {
@@ -294,7 +303,12 @@ export default function VASTPlugin(vastResponse, player123) {
 
     player.vast.vastResponse = vastResponse;
     logger.debug ("calling adIntegrator.playAd() with vastResponse:", vastResponse);
-    player.vast.adUnit = adIntegrator.playAd(vastResponse);
+    player.vast.adUnit = adIntegrator.playAd(vastResponse, function (error, response) {
+      if (error) {
+        trackAdError(error, response);
+      } else {
+        player.trigger('vast.adEnd');
+      }})
 
     /*** Local functions ****/
     function addAdsLabel() {

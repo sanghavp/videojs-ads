@@ -302,27 +302,29 @@ VASTIntegrator.prototype._addClickThrough = function addClickThrough(mediaFile, 
   }
 };
 
-VASTIntegrator.prototype._playSelectedAd = function playSelectedAd(source, response, callback) {
+VASTIntegrator.prototype._playSelectedAd = async function playSelectedAd(source, response, callback) {
   var player = this.player;
 
   player.preload("auto"); //without preload=auto the durationchange event is never fired
-  player.src(source);
+  await player.src(source);
 
   logger.debug ("<VASTIntegrator._playSelectedAd> waiting for durationchange to play the ad...");
+  console.log("đã vào hàm playSelectedAd!");
+  player.on('durationchange', (e) => {
+    console.log("Thay đổi thời gian của video rồi!", e);
+  })
 
-  playerUtils.once(player, ['durationchange', 'error', 'vast.adsCancel'], function (evt) {
-    if (evt.type === 'durationchange') {
-      logger.debug ("<VASTIntegrator._playSelectedAd> got durationchange; calling playAd()");
-      playAd();
-    } else if(evt.type === 'error') {
-      callback(new VASTError("on VASTIntegrator, Player is unable to play the Ad", 400), response);
-    }
-    //NOTE: If the ads get canceled we do nothing/
-  });
+  // Gọi hàm chạy quảng cáo lập tức
+  playAd();
+
+  // Lắng nghe sự kiện lỗi quảng cáo
+  player.on('error', () => {
+    callback(new VASTError("on VASTIntegrator, Player is unable to play the Ad", 400), response)
+  })
 
   /**** local functions ******/
   function playAd() {
-
+    console.log("Sau khi gọi hàm playAD");
     playerUtils.once(player, ['playing', 'vast.adsCancel'], function (evt) {
       if(evt.type === 'vast.adsCancel'){
         return;

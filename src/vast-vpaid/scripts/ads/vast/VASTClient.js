@@ -73,7 +73,6 @@ function _getVASTAd(adTagUrl) {
   return new Promise((resolve) => {
     function getAdWaterfall() {
       return new Promise((resolve) => {
-        console.log(adTagUrl);
         resolve(requestVASTXml(adTagUrl));
       });
     }
@@ -301,18 +300,12 @@ async function requestVASTXml(adTagUrl) {
 
 VASTClient.prototype._buildVASTResponse = function buildVASTResponse(adsChain) {
   var response = new VASTResponse();
-  console.log(
-    "response vvresponse response response response response",
-    response
-  );
   addAdsToResponse(response, adsChain);
   validateResponse(response);
   return response;
 
   //*** Local function ****
   function addAdsToResponse(response, ads) {
-    console.log("ads adsdads: ", ads);
-    console.log("ads adsdads response: ", response);
     ads.forEach(function (ad) {
       response.addAd(ad);
     });
