@@ -120,7 +120,7 @@ function _getVASTAd(adTagUrl) {
     function _getAd() {
       return new Promise((resolve, reject) => {
         if (utilities.isString(adTagUrl)) {
-          resolve(requestVASTAd(adTagUrl, next));
+          resolve(requestVASTAd(adTagUrl));
         } else {
           resolve(adTagUrl);
         }
@@ -133,31 +133,32 @@ function _getVASTAd(adTagUrl) {
     });
 
     return a;
-  }
-
-  function buildAd(adJxonTree, adChain) {
-    try {
-      var ad = new Ad(adJxonTree);
-      if (ad) {
-        adChain.push(ad);
+    async function buildAd(adJxonTree, adChain) {
+      try {
+        var ad = new Ad(adJxonTree);
+        if (ad) {
+          adChain.push(ad);
+        }
+  
+        if (validateAd(ad)) {
+          return validateAd(ad);
+        }
+  
+        if (ad.wrapper) {
+          await getAd(ad.wrapper.VASTAdTagURI, adChain);
+        }
+  
+        return adChain;
+      } catch (e) {
+        return new VASTError(
+          "on VASTClient.getVASTAd.buildAd, error parsing xml",
+          100
+        );
       }
-
-      if (validateAd(ad)) {
-        return error;
-      }
-
-      if (ad.wrapper) {
-        return getAd(ad.wrapper.VASTAdTagURI, adChain);
-      }
-
-      return adChain;
-    } catch (e) {
-      return new VASTError(
-        "on VASTClient.getVASTAd.buildAd, error parsing xml",
-        100
-      );
     }
   }
+
+  
 
   function validateAd(ad) {
     var wrapper = ad.wrapper;
@@ -197,10 +198,13 @@ function _getVASTAd(adTagUrl) {
   }
 
   async function requestVASTAd(adTagUrl) {
-    await requestVASTXml(adTagUrl);
+    const xmlStr = await requestVASTXml(adTagUrl);
+    const response = xml.toJXONTree(xmlStr.response).ad
+    console.log("request Vast AD", response);
+    return response;
   }
 
-  function buildVastWaterfall(xmlStr) {
+  async function buildVastWaterfall(xmlStr) {
     var vastTree;
     try {
       vastTree = xml.toJXONTree(xmlStr);
@@ -225,14 +229,13 @@ function _getVASTAd(adTagUrl) {
 
       if (checkErr) {
         _trackError(checkErr, waterfallAds);
-        return callback(checkErr, vastTree);
+        return checkErr;
       }
 
       let urlAds = waterfallAds.shift();
 
 
       let adChain = [];
-      getAd(urlAds, adChain);
 
       /*** Local functions ***/
       // Callback này dùng để lấy giá trị từ getAd ra ngoài, đó chính là adChain, mà adChain ban đầu là 1 mảng rỗng, khi vào getAd nó sẽ được thêm 1 Ad từ JSONTree đã chyuyeern vào
@@ -246,7 +249,7 @@ function _getVASTAd(adTagUrl) {
           return checkErr;
         }
       } else {
-        return adChain;
+        return await getAd(urlAds, adChain);
       }
 
       // return vastTree;

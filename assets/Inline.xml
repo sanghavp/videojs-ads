@@ -1,0 +1,23 @@
+<VAST version="2.0">
+    <Ad id="IMA3">
+        <InLine>
+            <AdSystem>VPAIDIMA3</AdSystem>
+            <AdTitle>IMA3</AdTitle>
+            <Impression>
+                <![CDATA[ ]]>
+            </Impression>
+            <Creatives>
+                <Creative>
+                    <Linear>
+                        <Duration>00:00:30</Duration>
+                        <MediaFiles>
+                            <MediaFile width="640" height="480" delivery="progressive" type="application/javascript" apiFramework="VPAID">
+                                <![CDATA[ https://imasdk.googleapis.com/js/sdkloader/vpaid_adapter.js?adtagurl=https://pubads.g.doubleclick.net/gampad/ads%3Fiu%3D/21766723698/tvc/tvc640x360%26description_url%3Dhttp://video.kenh14.vn/new.chn%26tfcd%3D0%26npa%3D0%26sz%3D640x360%26cust_params%3Dbrand%253DLays%26gdfp_req%3D1%26output%3Dvast%26unviewed_position_start%3D1%26env%3Dvp%26vpos%3Dpreroll%26vpmute%3D0%26vpa%3Dclick%26type%3Djs%26vad_type%3Dlinear%26channel%3Dvastadp ]]>
+                            </MediaFile>
+                        </MediaFiles>
+                    </Linear>
+                </Creative>
+            </Creatives>
+        </InLine>
+    </Ad>
+</VAST>

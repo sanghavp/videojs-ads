@@ -1,10 +1,12 @@
 let adsLink = ''
 
 // // ads VPAI
-adsLink = "http://127.0.0.1:5501/assets/v3/Video_Clicks_and_click_tracking-Inline-test.xml"
+// adsLink = "http://127.0.0.1:5501/assets/v3/Video_Clicks_and_click_tracking-Inline-test.xml"
 
+// IMA Link
+adsLink = "http://127.0.0.1:5501/assets/ima.xml"
 
-// adsLink = "http://127.0.0.1:5501/assets/ima.xml"
+// adsLink = 'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/single_ad_samples&sz=640x480&cust_params=sample_ct%3Dlinear&ciu_szs=300x250%2C728x90&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=';
 
 // ads VAST
 // adsLink = "http://127.0.0.1:5501/assets/v3/Inline_Linear_Tag-test.xml"
@@ -36,9 +38,9 @@ let player = videojs("video",{
   },
   controls: true,
   muted: true,
-  //   controlBar: {
-  //     volumePanel: {inline: false}
-  // },
+    controlBar: {
+      volumePanel: {inline: false}
+  },
 }, () => {
   
 })
@@ -46,23 +48,6 @@ let player = videojs("video",{
 player.parserXml(options)
 // check if player using IMA SDK Plugin
 console.log("player.usingPlugin('parserXml')",player.usingPlugin('parserXml'));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
