@@ -65,34 +65,20 @@ const parserXmlPlugin = async function (player, options) {
     let urlXml = !!settings.adTagUrl ? settings.adTagUrl : settings.adTagXML
     const vastResponse = await vast.getVASTResponse(urlXml);
     console.log("vastResponse", vastResponse);
-    
-    // function handleDataRes(error, response) {
-    //     if (error) {
-    //         trackAdError(error, response);
-    //     } else {
-    //         player.trigger("vast.adEnd");
-    //     }
-    // }
-
-    // function trackAdError(error, vastResponse) {
-    //     player.trigger({ type: 'vast.adError', error: error });
-    //     cancelAds();
-    //     logger.error('AD ERROR:', error.message, error, vastResponse);
-    // }
-
-    // function cancelAds() {
-    //     player.trigger('vast.adsCancel');
-    //     adsCanceled = true;
-    // }
-    // console.log("vastResponse", vastResponse);
-
     // end get ad response
 
-    // if () {
-    //     player.ima = new ImaPlugin(player, options);
-    // } else {
-    player.vastClient = VASTPlugin(vastResponse, player);
-    // }
+    // Phân loại quảng cáo
+    const checkAds = vastResponse.mediaFiles.find((Element) => {
+        return Element.src.includes('imasdk') || Element.src.includes('google')
+    })
+    // player.vastClient = VASTPlugin(vastResponse, player);
+    // Object.assign(options, {response: vastResponse})
+    // player.ima = new ImaPlugin(player, options);
+    if (checkAds) {
+        player.ima = new ImaPlugin(player, options);
+    } else {
+        player.vastClient = VASTPlugin(vastResponse, player);
+    }
 };
 
 const init = function (options) {

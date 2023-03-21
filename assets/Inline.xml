@@ -1,19 +1,39 @@
-<VAST version="2.0">
-    <Ad id="IMA3">
+<VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast.xsd" version="3.0">
+    <Ad id="1234567">
         <InLine>
-            <AdSystem>VPAIDIMA3</AdSystem>
-            <AdTitle>IMA3</AdTitle>
-            <Impression>
-                <![CDATA[ ]]>
-            </Impression>
+            <AdSystem>GDFP</AdSystem>
+            <AdTitle>Linear VPAID Example</AdTitle>
+            <Description>Vpaid Linear Video Ad</Description>
+            <Error>http://www.example.com/error</Error>
+            <Impression>http://www.example.com/impression</Impression>
             <Creatives>
-                <Creative>
+                <Creative sequence="1">
                     <Linear>
-                        <Duration>00:00:30</Duration>
+                        <Duration>00:00:00</Duration>
+                        <TrackingEvents>
+                            <Tracking event="start">http://www.example.com/start</Tracking>
+                            <Tracking event="firstQuartile">http://www.example.com/firstQuartile</Tracking>
+                            <Tracking event="midpoint">http://www.example.com/midpoint</Tracking>
+                            <Tracking event="thirdQuartile">http://www.example.com/thirdQuartile</Tracking>
+                            <Tracking event="complete">http://www.example.com/complete</Tracking>
+                            <Tracking event="mute">http://www.example.com/mute</Tracking>
+                            <Tracking event="unmute">http://www.example.com/unmute</Tracking>
+                            <Tracking event="rewind">http://www.example.com/rewind</Tracking>
+                            <Tracking event="pause">http://www.example.com/pause</Tracking>
+                            <Tracking event="resume">http://www.example.com/resume</Tracking>
+                            <Tracking event="fullscreen">http://www.example.com/fullscreen</Tracking>
+                            <Tracking event="creativeView">http://www.example.com/creativeView</Tracking>
+                            <Tracking event="acceptInvitation">http://www.example.com/acceptInvitation</Tracking>
+                        </TrackingEvents>
+                        <AdParameters>
+                            <![CDATA[ {"videos":[ {"url":"https://storage.googleapis.com/interactive-media-ads/media/media_linear_VPAID.mp4","mimetype":"video/mp4"}]} ]]>
+                        </AdParameters>
+                        <VideoClicks>
+                            <ClickThrough id="123">http://google.com</ClickThrough>
+                            <ClickTracking id="123">http://www.example.com/click</ClickTracking>
+                        </VideoClicks>
                         <MediaFiles>
-                            <MediaFile width="640" height="480" delivery="progressive" type="application/javascript" apiFramework="VPAID">
-                                <![CDATA[ https://imasdk.googleapis.com/js/sdkloader/vpaid_adapter.js?adtagurl=https://pubads.g.doubleclick.net/gampad/ads%3Fiu%3D/21766723698/tvc/tvc640x360%26description_url%3Dhttp://video.kenh14.vn/new.chn%26tfcd%3D0%26npa%3D0%26sz%3D640x360%26cust_params%3Dbrand%253DLays%26gdfp_req%3D1%26output%3Dvast%26unviewed_position_start%3D1%26env%3Dvp%26vpos%3Dpreroll%26vpmute%3D0%26vpa%3Dclick%26type%3Djs%26vad_type%3Dlinear%26channel%3Dvastadp ]]>
-                            </MediaFile>
+                            <MediaFile delivery="progressive" apiFramework="VPAID" type="application/javascript" width="640" height="480"> https://googleads.github.io/googleads-ima-html5/vpaid/linear/VpaidVideoAd.js </MediaFile>
                         </MediaFiles>
                     </Linear>
                 </Creative>

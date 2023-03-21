@@ -42,9 +42,6 @@ import videojs from "video.js";
 const ImaPlugin = function (player, options) {
   this.controller = new Controller(player, options);
 
-  console.log("-----------------", player);
-
-  
 
   /**
    * Listener JSDoc for ESLint. This listener can be passed to

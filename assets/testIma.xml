@@ -6,16 +6,16 @@
                 <![CDATA[ http://127.0.0.1:5501/assets/Inline.xml ]]>
             </VASTAdTagURI>
             <Impression id="AdMicro">
-                <![CDATA[ https://lg1.logging.admicro.vn/admt?dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&lsn=1679039888893&ce=1&lc=4&cr=1679040180328&ui=&asid=&bi=0&cmpg=28421&items=91083&zid=510940&pr=9285841003&cid=-1&pt=admt&tp=12&tpn=4&sspz=2012880 ]]>
+                <![CDATA[ https://lg1.logging.admicro.vn/admt?dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&lsn=1679039888893&ce=1&lc=4&cr=1679044308869&ui=&asid=&bi=0&cmpg=28421&items=91083&zid=510940&pr=9285841003&cid=-1&pt=admt&tp=12&tpn=4&sspz=2012880 ]]>
             </Impression>
             <Impression id="ssp_evv">
-                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&bid=2a0df788f0f2246035fd0d6efcba6ccfb92b3d1b5c3625cfb6ae7ec1ada8ec4c&did=2133&zid=2012880&type=2&event=1&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679126580&dealid=dsp-2133 ]]>
+                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&bid=f7b54d230b8b6631bfe04c2b448df11ef7b0cdce5525705221e39d4eac4ad4c8&did=2133&zid=2012880&type=2&event=1&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679130708&dealid=dsp-2133 ]]>
             </Impression>
             <Error>
                 <![CDATA[ https://lg1.logging.admicro.vn/ve?path=%2Fnew.chn&dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&bid=91083&zid=510940&cmp=28421&e=[ERRORCODE]&lsn=1679039888893&pid=086c69ec-dddf-47ec-a59b-756955288779&dgid=a5444a599d9f7033dceee940b009ccb1&ui=&asid= ]]>
             </Error>
             <Error>
-                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&bid=2a0df788f0f2246035fd0d6efcba6ccfb92b3d1b5c3625cfb6ae7ec1ada8ec4c&did=2133&zid=2012880&type=2&event=4&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679126580&dealid=dsp-2133 ]]>
+                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&bid=f7b54d230b8b6631bfe04c2b448df11ef7b0cdce5525705221e39d4eac4ad4c8&did=2133&zid=2012880&type=2&event=4&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679130708&dealid=dsp-2133 ]]>
             </Error>
             <Creatives>
                 <Creative sequence="1" AdID="">
@@ -68,12 +68,12 @@
                                 <![CDATA[ https://lg1.logging.admicro.vn/amttvc?p=28421%3B91083%3B510940%3B0%3B-1%3B9%3B16%3B{tagid}%3Bvideo.kenh14.vn&cov=0&path=%2Fnew.chn&lsn=1679039888893&pid=086c69ec-dddf-47ec-a59b-756955288779&dgid=a5444a599d9f7033dceee940b009ccb1&ui=&asid= ]]>
                             </Tracking>
                             <Tracking event="start">
-                                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&bid=2a0df788f0f2246035fd0d6efcba6ccfb92b3d1b5c3625cfb6ae7ec1ada8ec4c&did=2133&zid=2012880&type=2&event=3&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679126580&dealid=dsp-2133 ]]>
+                                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&bid=f7b54d230b8b6631bfe04c2b448df11ef7b0cdce5525705221e39d4eac4ad4c8&did=2133&zid=2012880&type=2&event=3&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679130708&dealid=dsp-2133 ]]>
                             </Tracking>
                         </TrackingEvents>
                         <VideoClicks>
                             <ClickTracking id="AdMicro">
-                                <![CDATA[ https://lg1.logging.admicro.vn/admt?dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&lsn=1679039888893&ce=1&lc=4&cr=1679040180328&ui=&asid=&bi=0&cmpg=28421&items=91083&zid=510940&pr=9285841003&cid=-1&pt=admt&tp=12&tpn=4&cov=1&sspz=2012880 ]]>
+                                <![CDATA[ https://lg1.logging.admicro.vn/admt?dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&lsn=1679039888893&ce=1&lc=4&cr=1679044308869&ui=&asid=&bi=0&cmpg=28421&items=91083&zid=510940&pr=9285841003&cid=-1&pt=admt&tp=12&tpn=4&cov=1&sspz=2012880 ]]>
                             </ClickTracking>
                         </VideoClicks>
                     </Linear>
@@ -101,13 +101,13 @@
                 <![CDATA[ In-Stream Video ]]>
             </AdTitle>
             <Impression id="AdMicro">
-                <![CDATA[ https://lg1.logging.admicro.vn/admt?dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&lsn=1679039888893&ce=1&lc=4&cr=1679040180330&ui=&asid=&appid=&bi=0&cmpg=28461&items=91231&zid=510940&pr=9286286516&cid=-1&pt=admt&tp=12&tpn=4&sspz=2012880 ]]>
+                <![CDATA[ https://lg1.logging.admicro.vn/admt?dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&lsn=1679039888893&ce=1&lc=4&cr=1679044308869&ui=&asid=&appid=&bi=0&cmpg=28461&items=91231&zid=510940&pr=9286286516&cid=-1&pt=admt&tp=12&tpn=4&sspz=2012880 ]]>
             </Impression>
             <Impression id="ThirdParty">
-                <![CDATA[ //ad.doubleclick.net/ddm/trackimp/N1414183.2806005ADMICRO/B29444569.360717464;dc_trk_aid=551688740;dc_trk_cid=188002389;ord=1679040180330;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;gdpr=${GDPR};gdpr_consent=${GDPR_CONSENT_755};ltd=? ]]>
+                <![CDATA[ //ad.doubleclick.net/ddm/trackimp/N1414183.2806005ADMICRO/B29444569.360717464;dc_trk_aid=551688740;dc_trk_cid=188002389;ord=1679044308869;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;gdpr=${GDPR};gdpr_consent=${GDPR_CONSENT_755};ltd=? ]]>
             </Impression>
             <Impression id="ssp_evv">
-                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&bid=84e82834accd549d216f3ab35bf93ab26212a154594db9a09dfb395501d19d4d&did=2009&zid=2012880&type=2&event=1&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679126580&dealid=dsp-2009 ]]>
+                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&bid=feed366f70304ab9d5fb870860288ebca402ac652d5a87ea73a14e8d8bb7e44a&did=2009&zid=2012880&type=2&event=1&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679130708&dealid=dsp-2009 ]]>
             </Impression>
             <Creatives>
                 <Creative sequence="1">
@@ -163,12 +163,12 @@
                                 <![CDATA[ https://lg1.logging.admicro.vn/amttvc?p=28461%3B91231%3B510940%3B0%3B-1%3B9%3B16%3B{tagid}%3Bvideo.kenh14.vn&cov=0&path=%2Fnew.chn&lsn=1679039888893&pid=086c69ec-dddf-47ec-a59b-756955288779&dgid=a5444a599d9f7033dceee940b009ccb1&ui=&asid= ]]>
                             </Tracking>
                             <Tracking event="start">
-                                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&bid=84e82834accd549d216f3ab35bf93ab26212a154594db9a09dfb395501d19d4d&did=2009&zid=2012880&type=2&event=3&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679126580&dealid=dsp-2009 ]]>
+                                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&bid=feed366f70304ab9d5fb870860288ebca402ac652d5a87ea73a14e8d8bb7e44a&did=2009&zid=2012880&type=2&event=3&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679130708&dealid=dsp-2009 ]]>
                             </Tracking>
                         </TrackingEvents>
                         <VideoClicks>
                             <ClickThrough>
-                                <![CDATA[ https://lg1.logging.admicro.vn/admt?dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&lsn=1679039888893&ce=1&lc=4&cr=1679040180330&ui=&asid=&bi=0&cmpg=28461&items=91231&zid=510940&pr=9286286516&cid=-1&pt=admt&tp=12&tpn=4&cov=1&re=https%3A%2F%2Fad.doubleclick.net%2Fddm%2Ftrackclk%2FN1414183.2806005ADMICRO%2FB29444569.360717464%3Bdc_trk_aid%3D551688740%3Bdc_trk_cid%3D188002389%3Bdc_lat%3D%3Bdc_rdid%3D%3Btag_for_child_directed_treatment%3D%3Btfua%3D%3Bltd%3D&sspz=2012880 ]]>
+                                <![CDATA[ https://lg1.logging.admicro.vn/admt?dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&lsn=1679039888893&ce=1&lc=4&cr=1679044308869&ui=&asid=&bi=0&cmpg=28461&items=91231&zid=510940&pr=9286286516&cid=-1&pt=admt&tp=12&tpn=4&cov=1&re=https%3A%2F%2Fad.doubleclick.net%2Fddm%2Ftrackclk%2FN1414183.2806005ADMICRO%2FB29444569.360717464%3Bdc_trk_aid%3D551688740%3Bdc_trk_cid%3D188002389%3Bdc_lat%3D%3Bdc_rdid%3D%3Btag_for_child_directed_treatment%3D%3Btfua%3D%3Bltd%3D&sspz=2012880 ]]>
                             </ClickThrough>
                         </VideoClicks>
                         <MediaFiles>
@@ -185,7 +185,7 @@
                 <![CDATA[ https://lg1.logging.admicro.vn/ve?path=%2Fnew.chn&dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&bid=91231&zid=510940&cmp=28461&e=[ERRORCODE]&lsn=1679039888893&pid=086c69ec-dddf-47ec-a59b-756955288779&dgid=a5444a599d9f7033dceee940b009ccb1&ui=&asid=&appid= ]]>
             </Error>
             <Error>
-                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&bid=84e82834accd549d216f3ab35bf93ab26212a154594db9a09dfb395501d19d4d&did=2009&zid=2012880&type=2&event=4&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679126580&dealid=dsp-2009 ]]>
+                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&bid=feed366f70304ab9d5fb870860288ebca402ac652d5a87ea73a14e8d8bb7e44a&did=2009&zid=2012880&type=2&event=4&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679130708&dealid=dsp-2009 ]]>
             </Error>
             <Extensions>
                 <Extension type="AdMicro">
@@ -206,13 +206,13 @@
                 <![CDATA[ In-Stream Video ]]>
             </AdTitle>
             <Impression id="AdMicro">
-                <![CDATA[ https://lg1.logging.admicro.vn/admt?dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&lsn=1679039888893&ce=1&lc=4&cr=1679040180331&ui=&asid=&appid=&bi=0&cmpg=28458&items=91214&zid=510940&pr=9283993340&cid=-1&pt=admt&tp=12&tpn=4&sspz=2012880 ]]>
+                <![CDATA[ https://lg1.logging.admicro.vn/admt?dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&lsn=1679039888893&ce=1&lc=4&cr=1679044308870&ui=&asid=&appid=&bi=0&cmpg=28458&items=91214&zid=510940&pr=9283993340&cid=-1&pt=admt&tp=12&tpn=4&sspz=2012880 ]]>
             </Impression>
             <Impression id="ThirdParty">
-                <![CDATA[ //ad.doubleclick.net/ddm/trackimp/N1414183.2806005ADMICRO/B29423122.360843417;dc_trk_aid=551463464;dc_trk_cid=187300942;ord=1679040180331;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;gdpr=${GDPR};gdpr_consent=${GDPR_CONSENT_755};ltd=? ]]>
+                <![CDATA[ //ad.doubleclick.net/ddm/trackimp/N1414183.2806005ADMICRO/B29423122.360843417;dc_trk_aid=551463464;dc_trk_cid=187300942;ord=1679044308870;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;gdpr=${GDPR};gdpr_consent=${GDPR_CONSENT_755};ltd=? ]]>
             </Impression>
             <Impression id="ssp_evv">
-                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&bid=73122eea9dd3f01871978053b781d6af895f95535c231f6fef46cf062ccea094&did=2009&zid=2012880&type=2&event=1&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679126580&dealid=dsp-2009 ]]>
+                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&bid=36d03eae86fea939d99d8805823297e152118482fbb424faba86c65ef4ec4701&did=2009&zid=2012880&type=2&event=1&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679130708&dealid=dsp-2009 ]]>
             </Impression>
             <Creatives>
                 <Creative sequence="1">
@@ -268,12 +268,12 @@
                                 <![CDATA[ https://lg1.logging.admicro.vn/amttvc?p=28458%3B91214%3B510940%3B0%3B-1%3B9%3B16%3B{tagid}%3Bvideo.kenh14.vn&cov=0&path=%2Fnew.chn&lsn=1679039888893&pid=086c69ec-dddf-47ec-a59b-756955288779&dgid=a5444a599d9f7033dceee940b009ccb1&ui=&asid= ]]>
                             </Tracking>
                             <Tracking event="start">
-                                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&bid=73122eea9dd3f01871978053b781d6af895f95535c231f6fef46cf062ccea094&did=2009&zid=2012880&type=2&event=3&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679126580&dealid=dsp-2009 ]]>
+                                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&bid=36d03eae86fea939d99d8805823297e152118482fbb424faba86c65ef4ec4701&did=2009&zid=2012880&type=2&event=3&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679130708&dealid=dsp-2009 ]]>
                             </Tracking>
                         </TrackingEvents>
                         <VideoClicks>
                             <ClickThrough>
-                                <![CDATA[ https://lg1.logging.admicro.vn/admt?dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&lsn=1679039888893&ce=1&lc=4&cr=1679040180331&ui=&asid=&bi=0&cmpg=28458&items=91214&zid=510940&pr=9283993340&cid=-1&pt=admt&tp=12&tpn=4&cov=1&re=https%3A%2F%2Fad.doubleclick.net%2Fddm%2Ftrackclk%2FN1414183.2806005ADMICRO%2FB29423122.360843417%3Bdc_trk_aid%3D551463464%3Bdc_trk_cid%3D187300942%3Bdc_lat%3D%3Bdc_rdid%3D%3Btag_for_child_directed_treatment%3D%3Btfua%3D%3Bltd%3D&sspz=2012880 ]]>
+                                <![CDATA[ https://lg1.logging.admicro.vn/admt?dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&lsn=1679039888893&ce=1&lc=4&cr=1679044308870&ui=&asid=&bi=0&cmpg=28458&items=91214&zid=510940&pr=9283993340&cid=-1&pt=admt&tp=12&tpn=4&cov=1&re=https%3A%2F%2Fad.doubleclick.net%2Fddm%2Ftrackclk%2FN1414183.2806005ADMICRO%2FB29423122.360843417%3Bdc_trk_aid%3D551463464%3Bdc_trk_cid%3D187300942%3Bdc_lat%3D%3Bdc_rdid%3D%3Btag_for_child_directed_treatment%3D%3Btfua%3D%3Bltd%3D&sspz=2012880 ]]>
                             </ClickThrough>
                         </VideoClicks>
                         <MediaFiles>
@@ -290,7 +290,7 @@
                 <![CDATA[ https://lg1.logging.admicro.vn/ve?path=%2Fnew.chn&dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&bid=91214&zid=510940&cmp=28458&e=[ERRORCODE]&lsn=1679039888893&pid=086c69ec-dddf-47ec-a59b-756955288779&dgid=a5444a599d9f7033dceee940b009ccb1&ui=&asid=&appid= ]]>
             </Error>
             <Error>
-                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&bid=73122eea9dd3f01871978053b781d6af895f95535c231f6fef46cf062ccea094&did=2009&zid=2012880&type=2&event=4&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679126580&dealid=dsp-2009 ]]>
+                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&bid=36d03eae86fea939d99d8805823297e152118482fbb424faba86c65ef4ec4701&did=2009&zid=2012880&type=2&event=4&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679130708&dealid=dsp-2009 ]]>
             </Error>
             <Extensions>
                 <Extension type="AdMicro">
@@ -311,13 +311,13 @@
                 <![CDATA[ In-Stream Video ]]>
             </AdTitle>
             <Impression id="AdMicro">
-                <![CDATA[ https://lg1.logging.admicro.vn/admt?dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&lsn=1679039888893&ce=1&lc=4&cr=1679040180333&ui=&asid=&appid=&bi=0&cmpg=28458&items=91226&zid=510940&pr=9285133460&cid=-1&pt=admt&tp=12&tpn=4&sspz=2012880 ]]>
+                <![CDATA[ https://lg1.logging.admicro.vn/admt?dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&lsn=1679039888893&ce=1&lc=4&cr=1679044308871&ui=&asid=&appid=&bi=0&cmpg=28458&items=91226&zid=510940&pr=9285133460&cid=-1&pt=admt&tp=12&tpn=4&sspz=2012880 ]]>
             </Impression>
             <Impression id="ThirdParty">
-                <![CDATA[ //ad.doubleclick.net/ddm/trackimp/N1414183.2806005ADMICRO/B29423122.360843417;dc_trk_aid=551463464;dc_trk_cid=187300942;ord=1679040180333;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;gdpr=${GDPR};gdpr_consent=${GDPR_CONSENT_755};ltd=? ]]>
+                <![CDATA[ //ad.doubleclick.net/ddm/trackimp/N1414183.2806005ADMICRO/B29423122.360843417;dc_trk_aid=551463464;dc_trk_cid=187300942;ord=1679044308871;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;gdpr=${GDPR};gdpr_consent=${GDPR_CONSENT_755};ltd=? ]]>
             </Impression>
             <Impression id="ssp_evv">
-                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&bid=939f8c86f9876e78ed963ce1312aaa451072442158a4198e8ad56ed0f42b5085&did=2009&zid=2012880&type=2&event=1&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679126580&dealid=dsp-2009 ]]>
+                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&bid=91875ab35608097ad9805ee8be49b9b211da1c022aad50d9af8ca1358562b1a1&did=2009&zid=2012880&type=2&event=1&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679130708&dealid=dsp-2009 ]]>
             </Impression>
             <Creatives>
                 <Creative sequence="1">
@@ -373,12 +373,12 @@
                                 <![CDATA[ https://lg1.logging.admicro.vn/amttvc?p=28458%3B91226%3B510940%3B0%3B-1%3B9%3B16%3B{tagid}%3Bvideo.kenh14.vn&cov=0&path=%2Fnew.chn&lsn=1679039888893&pid=086c69ec-dddf-47ec-a59b-756955288779&dgid=a5444a599d9f7033dceee940b009ccb1&ui=&asid= ]]>
                             </Tracking>
                             <Tracking event="start">
-                                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&bid=939f8c86f9876e78ed963ce1312aaa451072442158a4198e8ad56ed0f42b5085&did=2009&zid=2012880&type=2&event=3&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679126580&dealid=dsp-2009 ]]>
+                                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&bid=91875ab35608097ad9805ee8be49b9b211da1c022aad50d9af8ca1358562b1a1&did=2009&zid=2012880&type=2&event=3&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679130708&dealid=dsp-2009 ]]>
                             </Tracking>
                         </TrackingEvents>
                         <VideoClicks>
                             <ClickThrough>
-                                <![CDATA[ https://lg1.logging.admicro.vn/admt?dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&lsn=1679039888893&ce=1&lc=4&cr=1679040180333&ui=&asid=&bi=0&cmpg=28458&items=91226&zid=510940&pr=9285133460&cid=-1&pt=admt&tp=12&tpn=4&cov=1&re=https%3A%2F%2Fad.doubleclick.net%2Fddm%2Ftrackclk%2FN1414183.2806005ADMICRO%2FB29423122.360843417%3Bdc_trk_aid%3D551463464%3Bdc_trk_cid%3D187300942%3Bdc_lat%3D%3Bdc_rdid%3D%3Btag_for_child_directed_treatment%3D%3Btfua%3D%3Bltd%3D&sspz=2012880 ]]>
+                                <![CDATA[ https://lg1.logging.admicro.vn/admt?dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&lsn=1679039888893&ce=1&lc=4&cr=1679044308871&ui=&asid=&bi=0&cmpg=28458&items=91226&zid=510940&pr=9285133460&cid=-1&pt=admt&tp=12&tpn=4&cov=1&re=https%3A%2F%2Fad.doubleclick.net%2Fddm%2Ftrackclk%2FN1414183.2806005ADMICRO%2FB29423122.360843417%3Bdc_trk_aid%3D551463464%3Bdc_trk_cid%3D187300942%3Bdc_lat%3D%3Bdc_rdid%3D%3Btag_for_child_directed_treatment%3D%3Btfua%3D%3Bltd%3D&sspz=2012880 ]]>
                             </ClickThrough>
                         </VideoClicks>
                         <MediaFiles>
@@ -395,7 +395,7 @@
                 <![CDATA[ https://lg1.logging.admicro.vn/ve?path=%2Fnew.chn&dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&bid=91226&zid=510940&cmp=28458&e=[ERRORCODE]&lsn=1679039888893&pid=086c69ec-dddf-47ec-a59b-756955288779&dgid=a5444a599d9f7033dceee940b009ccb1&ui=&asid=&appid= ]]>
             </Error>
             <Error>
-                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&bid=939f8c86f9876e78ed963ce1312aaa451072442158a4198e8ad56ed0f42b5085&did=2009&zid=2012880&type=2&event=4&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679126580&dealid=dsp-2009 ]]>
+                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&bid=91875ab35608097ad9805ee8be49b9b211da1c022aad50d9af8ca1358562b1a1&did=2009&zid=2012880&type=2&event=4&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679130708&dealid=dsp-2009 ]]>
             </Error>
             <Extensions>
                 <Extension type="AdMicro">
@@ -416,13 +416,13 @@
                 <![CDATA[ In-Stream Video ]]>
             </AdTitle>
             <Impression id="AdMicro">
-                <![CDATA[ https://lg1.logging.admicro.vn/admt?dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&lsn=1679039888893&ce=1&lc=4&cr=1679040180334&ui=&asid=&appid=&bi=0&cmpg=28462&items=91238&zid=510940&pr=9286363580&cid=-1&pt=admt&tp=12&tpn=4&sspz=2012880 ]]>
+                <![CDATA[ https://lg1.logging.admicro.vn/admt?dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&lsn=1679039888893&ce=1&lc=4&cr=1679044308872&ui=&asid=&appid=&bi=0&cmpg=28462&items=91238&zid=510940&pr=9286363580&cid=-1&pt=admt&tp=12&tpn=4&sspz=2012880 ]]>
             </Impression>
             <Impression id="ThirdParty">
-                <![CDATA[ //ad.doubleclick.net/ddm/trackimp/N1414183.2806005ADMICRO/B29423122.360843417;dc_trk_aid=551463464;dc_trk_cid=187302580;ord=1679040180334;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;gdpr=${GDPR};gdpr_consent=${GDPR_CONSENT_755};ltd=? ]]>
+                <![CDATA[ //ad.doubleclick.net/ddm/trackimp/N1414183.2806005ADMICRO/B29423122.360843417;dc_trk_aid=551463464;dc_trk_cid=187302580;ord=1679044308872;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;gdpr=${GDPR};gdpr_consent=${GDPR_CONSENT_755};ltd=? ]]>
             </Impression>
             <Impression id="ssp_evv">
-                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&bid=703120674e8443c4d82c24f53249ea02205ad7b3fb1f668519d85773053b7872&did=2009&zid=2012880&type=2&event=1&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679126580&dealid=dsp-2009 ]]>
+                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&bid=fd07ff77dfa49e39c95a3efe03a1539a78f6e95958e852021c98e5fddad53c88&did=2009&zid=2012880&type=2&event=1&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679130708&dealid=dsp-2009 ]]>
             </Impression>
             <Creatives>
                 <Creative sequence="1">
@@ -478,12 +478,12 @@
                                 <![CDATA[ https://lg1.logging.admicro.vn/amttvc?p=28462%3B91238%3B510940%3B0%3B-1%3B9%3B16%3B{tagid}%3Bvideo.kenh14.vn&cov=0&path=%2Fnew.chn&lsn=1679039888893&pid=086c69ec-dddf-47ec-a59b-756955288779&dgid=a5444a599d9f7033dceee940b009ccb1&ui=&asid= ]]>
                             </Tracking>
                             <Tracking event="start">
-                                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&bid=703120674e8443c4d82c24f53249ea02205ad7b3fb1f668519d85773053b7872&did=2009&zid=2012880&type=2&event=3&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679126580&dealid=dsp-2009 ]]>
+                                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&bid=fd07ff77dfa49e39c95a3efe03a1539a78f6e95958e852021c98e5fddad53c88&did=2009&zid=2012880&type=2&event=3&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679130708&dealid=dsp-2009 ]]>
                             </Tracking>
                         </TrackingEvents>
                         <VideoClicks>
                             <ClickThrough>
-                                <![CDATA[ https://lg1.logging.admicro.vn/admt?dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&lsn=1679039888893&ce=1&lc=4&cr=1679040180334&ui=&asid=&bi=0&cmpg=28462&items=91238&zid=510940&pr=9286363580&cid=-1&pt=admt&tp=12&tpn=4&cov=1&re=https%3A%2F%2Fad.doubleclick.net%2Fddm%2Ftrackclk%2FN1414183.2806005ADMICRO%2FB29423122.360843417%3Bdc_trk_aid%3D551463464%3Bdc_trk_cid%3D187302580%3Bdc_lat%3D%3Bdc_rdid%3D%3Btag_for_child_directed_treatment%3D%3Btfua%3D%3Bltd%3D&sspz=2012880 ]]>
+                                <![CDATA[ https://lg1.logging.admicro.vn/admt?dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&lsn=1679039888893&ce=1&lc=4&cr=1679044308872&ui=&asid=&bi=0&cmpg=28462&items=91238&zid=510940&pr=9286363580&cid=-1&pt=admt&tp=12&tpn=4&cov=1&re=https%3A%2F%2Fad.doubleclick.net%2Fddm%2Ftrackclk%2FN1414183.2806005ADMICRO%2FB29423122.360843417%3Bdc_trk_aid%3D551463464%3Bdc_trk_cid%3D187302580%3Bdc_lat%3D%3Bdc_rdid%3D%3Btag_for_child_directed_treatment%3D%3Btfua%3D%3Bltd%3D&sspz=2012880 ]]>
                             </ClickThrough>
                         </VideoClicks>
                         <MediaFiles>
@@ -500,7 +500,7 @@
                 <![CDATA[ https://lg1.logging.admicro.vn/ve?path=%2Fnew.chn&dmn=http%3A%2F%2Fvideo.kenh14.vn%2Fnew.chn&bid=91238&zid=510940&cmp=28462&e=[ERRORCODE]&lsn=1679039888893&pid=086c69ec-dddf-47ec-a59b-756955288779&dgid=a5444a599d9f7033dceee940b009ccb1&ui=&asid=&appid= ]]>
             </Error>
             <Error>
-                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=d19b9e59-2fbf-4863-8810-fffa5e164752140-64141eb4&bid=703120674e8443c4d82c24f53249ea02205ad7b3fb1f668519d85773053b7872&did=2009&zid=2012880&type=2&event=4&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679126580&dealid=dsp-2009 ]]>
+                <![CDATA[ https://lg1.logging.admicro.vn/ssp_evv?dmn=video.kenh14.vn&path=video.kenh14.vn/new.chn&lsn=1679039888893&rid=493f6698-03b1-4cb4-814c-296e8789834b115-64142ed4&bid=fd07ff77dfa49e39c95a3efe03a1539a78f6e95958e852021c98e5fddad53c88&did=2009&zid=2012880&type=2&event=4&vid=kenh14cdn.com%2F203336854389633024%2F2023%2F3%2F14%2Fphgtroidat8337-16787858300332147464967.mp4&tags=5&adstype=1&expire=1679130708&dealid=dsp-2009 ]]>
             </Error>
             <Extensions>
                 <Extension type="AdMicro">

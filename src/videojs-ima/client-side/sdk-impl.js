@@ -281,6 +281,7 @@ SdkImpl.prototype.requestAds = function () {
     type: "ads-request",
     AdsRequest: adsRequest,
   });
+  console.log("adsRequest", adsRequest);
 };
 
 /**
@@ -291,7 +292,8 @@ SdkImpl.prototype.requestAds = function () {
  * @param {google.ima.AdsManagerLoadedEvent} adsManagerLoadedEvent Fired when
  *     the AdsManager loads.
  */
-//  Setting event
+// Setting event
+// cài đặt sự kiện
 SdkImpl.prototype.onAdsManagerLoaded = function (adsManagerLoadedEvent) {
   this.createAdsRenderingSettings();
 

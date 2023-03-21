@@ -147,7 +147,17 @@ function _getVASTAd(adTagUrl) {
         if (ad.wrapper) {
           await getAd(ad.wrapper.VASTAdTagURI, adChain);
         }
-  
+        
+        // 
+        /**
+         * Tạo 1 biến lưu link, thay dổi link mỗi khi có thẻ wrapper
+         * Mỗi khi có thẻ wrapper thì sẽ thay đổi giá trị
+         * Sau khi đệ quy thành công, tiếp tục sử dụng lệnh if để return cả AdChain lẫn link
+         * Nếu nhưng ko đệ quy thì gửi link ban đầu truyền vào 
+         */
+        if(adChain.length >= 1){
+          console.log("CÓ thẻ wrapper!", adTagUrl);
+        }
         return adChain;
       } catch (e) {
         return new VASTError(

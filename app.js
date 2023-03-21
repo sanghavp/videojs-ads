@@ -38,11 +38,9 @@ let player = videojs("video",{
   },
   controls: true,
   muted: true,
-    controlBar: {
-      volumePanel: {inline: false}
+  controlBar: {
+    volumePanel: {inline: true}
   },
-}, () => {
-  
 })
 // using ads plugin
 player.parserXml(options)
